@@ -133,4 +133,11 @@ Redis is fast
 - Data is organized in simple data structures
 - Redis has a simple feature set
 
+### 5. Initial Setup
+
+- [Redis Cloud](https://app.redislabs.com/)
+- [rbook - Redis Javascript Notebook](http://rbook.cloud/)
+- [npm rbook - npx rbook](https://www.npmjs.com/package/rbook)
+  - it doesn't look like the latest version
+
 </details>
