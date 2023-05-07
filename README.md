@@ -146,40 +146,21 @@ Redis is fast
 [Redis Documentation - Data Types](https://redis.io/docs/data-types/)
 
 - String: Store plain string or number
-  - SET
-  - GET
-  - APPEND
 - List: List of strings
-  - LINDEX
-  - LLEN
-  - LINSERT
 - Hash: Collection of key-value pairs
-  - HSET
-  - HGET
-  - HDEL
 - Set: Set of strings (each string is unique)
-  - SADD
-  - SCARD
-  - SDIFF
 - Sorted Set: Set of strings in a particular order
-  - ZADD
-  - ZDIFF
-  - ZCOUNT
 - Bitmap: Kind of like a collection of booleans
-  - BITOP
-  - BITCOUNT
-  - BITPOS
 - Hyperloglog: Kind of like a collection of booleans
-  - PFADD
-  - PFCOUNT
-  - PFMERGE
 - JSON: Nested JSON structure
-  - JSON.SET
-  - JSON.GET
-  - JSON.DEL
 - Index: Internal data used for searching
-  - FT.SEARCH
-  - FT.CREATE
-  - FT.PROFILE
+
+### 9. Documentation on Commands
+
+[⭐️ Redis Commands Documentation](https://redis.io/commands)
+
+# Documentations
+
+- [Section 2: Commands for Adding and Querying Data](./02-basic-commands/README-02.md)
 
 </details>
