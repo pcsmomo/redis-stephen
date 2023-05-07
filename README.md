@@ -2,13 +2,12 @@
 
 Redis: The Complete Developer's Guide by Stephen Grider
 
-
 ## File structure
 
 - RedisInsight
-  - yarn --cwd redisinsight/api/ start:dev
-  - yarn start:web
-  - open -a "Google Chrome.app" http://127.0.0.1:8080/ http://localhost:5050/api/docs
+  - `yarn --cwd redisinsight/api/ start:dev`
+  - `yarn start:web`
+  - `open -a "Google Chrome.app" http://127.0.0.1:8080/ http://localhost:5050/api/docs`
 
 # Details
 
@@ -119,8 +118,6 @@ yarn start:main # hmm doesn't work at the moment
 # yarn start # on the version, b04c050b942e7ff17257e1027a0607cefe99fb3a, on March, 2023, works for me.
 ```
 
-
-
 - connect to 127.0.0.1:6379 to see the list of keys on my local redis
 
 ## Section 1: Get Started Here!
@@ -139,5 +136,50 @@ Redis is fast
 - [rbook - Redis Javascript Notebook](http://rbook.cloud/)
 - [npm rbook - npx rbook](https://www.npmjs.com/package/rbook)
   - it doesn't look like the latest version
+
+## Section 2: Commands for Adding and Querying Data
+
+### 8. Basic Commands
+
+#### list of the data type
+
+[Redis Documentation - Data Types](https://redis.io/docs/data-types/)
+
+- String: Store plain string or number
+  - SET
+  - GET
+  - APPEND
+- List: List of strings
+  - LINDEX
+  - LLEN
+  - LINSERT
+- Hash: Collection of key-value pairs
+  - HSET
+  - HGET
+  - HDEL
+- Set: Set of strings (each string is unique)
+  - SADD
+  - SCARD
+  - SDIFF
+- Sorted Set: Set of strings in a particular order
+  - ZADD
+  - ZDIFF
+  - ZCOUNT
+- Bitmap: Kind of like a collection of booleans
+  - BITOP
+  - BITCOUNT
+  - BITPOS
+- Hyperloglog: Kind of like a collection of booleans
+  - PFADD
+  - PFCOUNT
+  - PFMERGE
+- JSON: Nested JSON structure
+  - JSON.SET
+  - JSON.GET
+  - JSON.DEL
+- Index: Internal data used for searching
+  - FT.SEARCH
+  - FT.CREATE
+  - FT.PROFILE
 
 </details>

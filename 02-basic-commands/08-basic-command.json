@@ -1,0 +1,1 @@
+{"name":"08-basic-command","fileName":"My Fancy Fault Notebook.json","createdAt":"2023-05-04T21:38:02.307Z","cells":[{"id":"d08eeb5a0f952c67","type":"markdown","content":"**Notes**\n\n* Add some notes here\n* Use markdown"},{"id":"5b8bb6026a329995","type":"redis","content":"SET name \"noah\""},{"id":"1683417167473","type":"redis","content":"GET name"}],"id":"dacb06970553cb86"}
