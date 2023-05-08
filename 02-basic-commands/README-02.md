@@ -83,4 +83,29 @@ GET color
 # "red"
 GET model
 # "toyota"
+
+MGET color model
+# 1) "red"
+# 2) "toyoya"
+```
+
+### 14. String Ranges
+
+```sh
+DEL color
+# (integer) 1
+DEL color
+# (integer) 0
+```
+
+```sh
+GET model
+# "toyota"
+GETRANGE model 0 2
+# "toy"
+
+SETRANGE model 2 blue
+# (integer) 6
+GET model
+# "toblue"
 ```
