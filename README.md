@@ -8,6 +8,11 @@ Redis: The Complete Developer's Guide by Stephen Grider
   - `yarn --cwd redisinsight/api/ start:dev`
   - `yarn start:web`
   - `open -a "Google Chrome.app" http://127.0.0.1:8080/ http://localhost:5050/api/docs`
+- 03-e-commerce-app
+  - run redis: `docker compose up`
+  - rbay
+    - `npm install`
+    - `npm run dev` -> localhost:3000
 
 # Details
 
@@ -162,5 +167,6 @@ Redis is fast
 # Documentations
 
 - [Section 2: Commands for Adding and Querying Data](./02-basic-commands/README-02.md)
+- [Section 3: E-Commerce App Setup](./03-e-commerce-app/README-03.md)
 
 </details>
