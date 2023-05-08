@@ -142,3 +142,27 @@ GET model
    - `MGET item:1 item:2 item:3`
 4. Create several items
    - `MSET item:4 trq item:5 nzq`
+
+### 16. Dealing with Numbers
+
+- DECR
+- DECRBY
+- INCR
+- INCRBY
+- INCRBYFLOAT
+
+```sh
+SET age 20
+INCR age
+# (integer) 21
+DECR age
+# (integer) 20
+INCRBY age 20
+# (integer) 40
+INCRBY age 20
+# (integer) 40
+INCRBY age -12
+# (integer) 28
+INCRBYFLOAT age -3.333
+# "24.667"
+```
