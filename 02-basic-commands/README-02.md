@@ -109,3 +109,36 @@ SETRANGE model 2 blue
 GET model
 # "toblue"
 ```
+
+### 15. Are These Commands Even Useful?
+
+| id  | type  | color | material |
+| --- | ----- | ----- | -------- |
+| 1   | couch | brown | leather  |
+| 2   | table | red   | wood     |
+| 3   | chair | green | plastic  |
+
+⬇️
+
+| id  | type | color | material |
+| --- | ---- | ----- | -------- |
+| 1   | a    | q     | g        |
+| 2   | g    | b     | o        |
+| 3   | e    | e     | c        |
+
+⬇️
+
+| Key    | Value |
+| ------ | ----- |
+| item:1 | bcd   |
+| item:2 | qog   |
+| item:3 | cir   |
+
+1. Fetch one to three properties of a single item
+   - `GETRANGE item:1 0 0`
+2. Update one to three properties of a single item
+   - `SETRANGE item:1 0 bcd`
+3. Fetch all properties related to several items
+   - `MGET item:1 item:2 item:3`
+4. Create several items
+   - `MSET item:4 trq item:5 nzq`
