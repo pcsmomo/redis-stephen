@@ -69,3 +69,18 @@ GET mykey
 
 - `PXAT` timestamp-milliseconds -- Set the specified Unix time at which the key will expire, in milliseconds.
 - `KEEPTTL` -- Retain the time to live associated with the key.
+
+## 12. Setting Multiple Keys
+
+- SETEX
+  - `SETEX color 2 red` === `SET color red EX 2`
+- SETNX
+  - `SETNX`
+
+```sh
+MSET color red model toyoya
+GET color
+# "red"
+GET model
+# "toyota"
+```
