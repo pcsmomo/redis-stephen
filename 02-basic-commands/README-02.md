@@ -165,4 +165,17 @@ INCRBY age -12
 # (integer) 28
 INCRBYFLOAT age -3.333
 # "24.667"
+INCRBYFLOAT age 0.333
+# "25"
 ```
+
+### 17. Again... Why do These Commands Exist?
+
+You could use `GET` and `SET` commands to increase number,
+but it is volunerable for asynchronous issues (if many requests occurs at the same time)
+
+To solve this issue,
+
+1. Use a Redis transaction with `WATCH`
+2. Use a lock
+3. Use INCR
