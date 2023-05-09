@@ -243,6 +243,12 @@ In addition to all of the features of Redis OSS, Redis Stack supports:
 - [Redis Stack Server on Docker](https://redis.io/docs/stack/get-started/install/docker/)
 - [Redis Stack Server - docker hub](https://hub.docker.com/r/redis/redis-stack-server)
 
+## Section 5: Hash Data Structures
+
+### 33. Hashes in Redis
+
+Hash doesn't accept nested object
+
 ## Section 6: Redis Has Gotcha's!
 
 ### 38. Slightly Unpredictable HSET and HGETALL
@@ -250,5 +256,11 @@ In addition to all of the features of Redis OSS, Redis Stack supports:
 ```sh
 npm run sandbox
 ```
+
+### 39. Issues with HSET
+
+node-redis tries to make all values to plain string with `toString()`
+
+However, `null` doesn't have `toString()`
 
 </details>
