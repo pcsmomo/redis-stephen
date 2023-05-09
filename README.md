@@ -243,4 +243,12 @@ In addition to all of the features of Redis OSS, Redis Stack supports:
 - [Redis Stack Server on Docker](https://redis.io/docs/stack/get-started/install/docker/)
 - [Redis Stack Server - docker hub](https://hub.docker.com/r/redis/redis-stack-server)
 
+## Section 6: Redis Has Gotcha's!
+
+### 38. Slightly Unpredictable HSET and HGETALL
+
+```sh
+npm run sandbox
+```
+
 </details>
