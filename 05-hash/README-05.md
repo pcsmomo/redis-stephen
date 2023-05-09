@@ -24,3 +24,23 @@ HGETALL company
 # 7) "reveneu"
 # 8) "5.3"
 ```
+
+### 35. Deleting Hash Data
+
+```sh
+HEXISTS company age
+# (integer) 1
+
+DEL company
+# (integer) 1
+
+HSET company name 'Concrete Co' age 1915
+# (integer) 2
+
+HDEL company age
+# (integer) 1
+
+HGETALL company
+# 1) "name"
+# 2) "Concrete Co"
+```
