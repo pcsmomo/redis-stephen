@@ -10,7 +10,13 @@ const run = async () => {
 		service: undefined || ''
 	});
 
-	const car = await client.hGetAll('car');
+	const car = await client.hGetAll('car#1234');
+
+	// if (!car) {
+	if (Object.keys(car).length === 0) {
+		console.log('No car found, respond with 404');
+		return;
+	}
 
 	console.log(car);
 };

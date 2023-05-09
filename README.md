@@ -263,4 +263,8 @@ node-redis tries to make all values to plain string with `toString()`
 
 However, `null` doesn't have `toString()`
 
+### 40. Issues with HGETALL
+
+if the key doesn't exist, it will return `{}`, not `null`
+
 </details>
