@@ -9,7 +9,9 @@ Redis: The Complete Developer's Guide by Stephen Grider
   - `yarn start:web`
   - `open -a "Google Chrome.app" http://127.0.0.1:8080/ http://localhost:5050/api/docs`
 - e-commerce-app
-  - run redis: `docker compose up`
+  - redis stack server
+    - `docker compose up`
+    - `docker exec -it redis-stack-server redis-cli`
   - rbay
     - `npm install`
     - `npm run dev` -> localhost:3000
@@ -166,8 +168,30 @@ Redis is fast
 
 # Documentations
 
+## Commands and practice
+
 - [Section 2: Commands for Adding and Querying Data](./02-basic-commands/README-02.md)
 - [Section 3: E-Commerce App Setup](./03-e-commerce-app-first/README-03.md)
   - `e-commerce-app/src/services/queries/page-cache.ts`
+
+## Section 4: Local Redis Setup
+
+### 31. Installing on MacOS
+
+#### Redis Stack
+
+In addition to all of the features of Redis OSS, Redis Stack supports:
+
+- Probabilistic data structures
+- Queryable JSON documents
+- Querying across hashes and JSON documents
+- Time series data support (ingestion & querying), including full-text search
+- Graph data models with the Cypher query language
+
+#### Links
+
+- [Redis Stack - About](https://redis.io/docs/stack/about/)
+- [Redis Stack Server on Docker](https://redis.io/docs/stack/get-started/install/docker/)
+- [Redis Stack Server - docker hub](https://hub.docker.com/r/redis/redis-stack-server)
 
 </details>
