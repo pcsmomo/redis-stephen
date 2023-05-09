@@ -44,3 +44,25 @@ HGETALL company
 # 1) "name"
 # 2) "Concrete Co"
 ```
+
+### 36. Numbers in Hashes
+
+> There's no `HINCR` command
+
+```sh
+HINCRBY company age 2
+# (integer) 1917
+HINCRBYFLOAT company age 10.055
+# "1927.055"
+
+HSTRLEN company name
+# (integer) 11
+
+HKEYS company
+# 1) "name"
+# 2) "age"
+
+HVALS company
+# 1) "Concrete Co"
+# 2) "1927.055"
+```
