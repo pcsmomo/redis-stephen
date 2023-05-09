@@ -168,5 +168,6 @@ Redis is fast
 
 - [Section 2: Commands for Adding and Querying Data](./02-basic-commands/README-02.md)
 - [Section 3: E-Commerce App Setup](./03-e-commerce-app/README-03.md)
+  - `e-commerce-app/src/services/queries/page-cache.ts`
 
 </details>
