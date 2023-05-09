@@ -30,3 +30,16 @@ npm run dev -- --open
 - What will be the key naming policy be for this data?
 - Any business-logic concerns?
   - Nope
+
+## 28. Key Naming Methodology
+
+- Common practice, `:`
+  - users:45
+  - items:19
+  - user:posts:901
+  - posts:jqip25jnm
+- Small twist on common practice, `#`
+  - users#45
+  - items#19
+  - user#posts#901
+  - posts#jqip25jnm
