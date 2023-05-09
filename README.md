@@ -15,6 +15,10 @@ Redis: The Complete Developer's Guide by Stephen Grider
   - rbay
     - `npm install`
     - `npm run dev` -> localhost:3000
+    - 03-e-commerce-app-first
+      - `e-commerce-app/src/services/queries/page-cache.ts`
+    - 06-redis-has-gotchas
+      - `e-commerce-app/sandbox/index.ts`
 
 # Details
 
@@ -170,9 +174,54 @@ Redis is fast
 
 ## Commands and practice
 
-- [Section 2: Commands for Adding and Querying Data](./02-basic-commands/README-02.md)
-- [Section 3: E-Commerce App Setup](./03-e-commerce-app-first/README-03.md)
-  - `e-commerce-app/src/services/queries/page-cache.ts`
+- [Section 2: Commands for Adding and Querying Data](docs/README-02.md)
+- [Section 5: Hash Data Structures](docs/README-05.md)
+
+## Section 3: E-Commerce App Setup
+
+### 24. Don't Skip This Video
+
+1. Node JS Setup
+2. extract the 'rbay.zip'
+3. npm install
+4. add connection info into `.env`
+5. npm run dev
+
+```sh
+npm install
+npm run dev -- --open
+```
+
+### 25. Redis Client Libraries
+
+- [node-redis](https://github.com/redis/node-redis)
+- [ioredis](https://github.com/luin/ioredis)
+  - not sure it'd be used in this course?
+
+### 27. Redis Design Methodology
+
+- What type of data are we storing
+  - Strings
+- Should we be concerned about the size of data?
+  - YES! Only cache certain pages
+- Do we need to expire this data?
+  - Yes, expire after some number of minutes/hours/days
+- What will be the key naming policy be for this data?
+- Any business-logic concerns?
+  - Nope
+
+### 28. Key Naming Methodology
+
+- Common practice, `:`
+  - users:45
+  - items:19
+  - user:posts:901
+  - posts:jqip25jnm
+- Small twist on common practice, `#`
+  - users#45
+  - items#19
+  - user#posts#901
+  - posts#jqip25jnm
 
 ## Section 4: Local Redis Setup
 
