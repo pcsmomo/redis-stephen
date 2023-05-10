@@ -290,4 +290,19 @@ if the key doesn't exist, it will return `{}`, not `null`
 - Used only for creating relations between different records
 - The record is only used for time series data
 
+### 51. Serializing Date Times
+
+#### Date Time Formats
+
+- Date()
+- Unix time (Epoch Unix Timestamp). Seconds, since Jan 1 1970
+  - 1683757575
+- Unix time as milliseconds
+  - 1683757575000
+
+```js
+// to unix time as milliseconds
+createdAt: attrs.createdAt.toMillis(),
+```
+
 </details>
