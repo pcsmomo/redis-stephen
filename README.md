@@ -19,6 +19,8 @@ Redis: The Complete Developer's Guide by Stephen Grider
       - `e-commerce-app/src/services/queries/page-cache.ts`
     - 06-redis-has-gotchas
       - `e-commerce-app/sandbox/index.ts`
+    - 07-design-patterns
+      - `e-commerce-app/src/services/queries`
 
 # Details
 
