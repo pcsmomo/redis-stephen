@@ -267,4 +267,25 @@ However, `null` doesn't have `toString()`
 
 if the key doesn't exist, it will return `{}`, not `null`
 
+## Section 7: Powerful Design Patterns
+
+### 43. What Data Type for Each Resource
+
+#### Reasons to store as Hash
+
+`users`, `sessions`, `items`
+
+- The record has manu attributes
+- A collection of these records have to be sorted many different ways
+- Often need to access a single record at a time
+
+#### Don't use Hashes When..
+
+`bids`, `views`, `likes`
+
+- The record is only for counting or enforcing uniqueness
+- Record stores only one or two attributes
+- Used only for creating relations between different records
+- The record is only used for time series data
+
 </details>
