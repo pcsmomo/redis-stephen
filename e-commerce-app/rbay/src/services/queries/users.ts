@@ -9,10 +9,15 @@ export const getUserById = async (id: string) => {};
 
 export const createUser = async (attrs: CreateUserAttrs) => {
 	const id = genId();
-	await client.hSet(usersKey(id), {
-		username: attrs.username,
-		password: attrs.password
-	});
+
+	await client.hSet(usersKey(id), serialize(attrs));
 
 	return id;
+};
+
+const serialize = (user: CreateUserAttrs) => {
+	return {
+		username: user.username,
+		password: user.password
+	};
 };
