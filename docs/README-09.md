@@ -44,3 +44,37 @@ SDIFF colors:1 colors:2 colors:3
 SDIFF colors:2 colors:1 colors:3
 # 1) "green"   # colors:2 - colors:1 - colors:3
 ```
+
+## 61. Store Variations
+
+- `SUNIONSTORE`: Stores the union of multiple sets in a key.
+- `SINTERSTORE`: Stores the intersect of multiple sets in a key.
+- `SDIFFSTORE`: Stores the difference of multiple sets in a key.
+
+```sh
+SINTERSTORE colors:results colors:1 colors:2 colors:3
+# (integer) 1
+
+SMEMBERS colors:results
+# 1) "blue"
+```
+
+## 62. Checking for an Element in a Set
+
+- `SISMEMBER`: Determines whether a member belongs to a set.
+- `SMISMEMBER`: Determines whether multiple members belong to a set.
+
+```sh
+SMEMBERS colors:1
+# 1) "orange"
+# 2) "blue"
+# 3) "red"
+
+SISMEMBER colors:1 purple
+# (integer) 0
+
+SMISMEMBER colors:1 red green blue
+# 1) (integer) 1
+# 2) (integer) 0
+# 3) (integer) 1
+```
