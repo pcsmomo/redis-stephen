@@ -9,15 +9,15 @@ export const post: RequestHandler = async ({ request, locals }) => {
 		{
 			name: data.name,
 			description: data.description,
+			imageUrl: createImageUrl(),
+			highestBidUserId: '',
+			ownerId: locals.session.userId,
 			createdAt: DateTime.now(),
 			endingAt: DateTime.now().plus({ seconds: data.duration }),
-			imageUrl: createImageUrl(),
-			ownerId: locals.session.userId,
-			highestBidUserId: '',
-			price: 0,
 			views: 0,
 			likes: 0,
 			bids: 0,
+			price: 0,
 			status: ''
 		},
 		locals.session.userId
