@@ -78,3 +78,28 @@ SMISMEMBER colors:1 red green blue
 # 2) (integer) 0
 # 3) (integer) 1
 ```
+
+## 63. Scanning a Set
+
+- `SCARD`: Returns the number of members in a set. Length
+- `SREM`: Removes one or more members from a set. Deletes the set if the last member was removed.
+- `SSCAN`: Iterates over members of a set.
+
+```sh
+SCARD colors:1
+# (integer) 3
+
+SMEMBERS colors:2
+SREM colors2:blue   # remove one
+SMEMBERS colors:2
+```
+
+```sh
+SSCAN colors:1 0 COUNT 2
+# 1) "1"            # next cursor ID
+# 2) 1) "blue"
+#    2) "red"
+SSCAN colors:1 1 COUNT 2
+# 1) "0"
+# 2) 1) "orange"
+```
