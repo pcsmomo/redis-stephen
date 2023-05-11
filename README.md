@@ -179,8 +179,9 @@ Redis is fast
 
 ## Commands and practice
 
-- [Section 2: Commands for Adding and Querying Data](docs/README-02.md)
-- [Section 5: Hash Data Structures](docs/README-05.md)
+- [Section 2: Basic commands](docs/README-02.md)
+- [Section 5: Hash](docs/README-05.md)
+- [Section 9: Sets](docs/README-09.md)
 
 ## Section 3: E-Commerce App Setup
 
