@@ -18,9 +18,12 @@ Redis: The Complete Developer's Guide by Stephen Grider
     - 03-e-commerce-app-first
       - `e-commerce-app/src/services/queries/page-cache.ts`
     - 06-redis-has-gotchas
-      - `e-commerce-app/sandbox/index.ts`
+      - playground: `e-commerce-app/sandbox/index.ts`
     - 07-design-patterns
       - `e-commerce-app/src/services/queries`
+    - 08-pipeline
+      - playground: `e-commerce-app/sandbox/index.ts`
+      -
 
 # Details
 
@@ -303,6 +306,16 @@ if the key doesn't exist, it will return `{}`, not `null`
 ```js
 // to unix time as milliseconds
 createdAt: attrs.createdAt.toMillis(),
+```
+
+## Section 8: Pipelining Commands
+
+### 55. Running Multiple Commands at the Same Time
+
+```sh
+redis-cli
+FLUSHALL # or delete all keys
+FLUSHDB # the same
 ```
 
 </details>
