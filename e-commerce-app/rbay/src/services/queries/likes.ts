@@ -1,11 +1,18 @@
 import { client } from '$services/redis';
 import { userLikesKey, itemsKey } from '$services/keys';
+import { getItems } from './items';
 
 export const userLikesItem = async (itemId: string, userId: string) => {
 	return client.sIsMember(userLikesKey(userId), itemId); // true or false
 };
 
-export const likedItems = async (userId: string) => {};
+export const likedItems = async (userId: string) => {
+	// Fetch all the item ID's from this user's liked set
+	const ids = await client.sMembers(userLikesKey(userId));
+
+	// Fetch all the item hashes with those ids and return as array
+	return getItems(ids);
+};
 
 export const likeItem = async (itemId: string, userId: string) => {
 	const inserted = await client.sAdd(userLikesKey(userId), itemId);
