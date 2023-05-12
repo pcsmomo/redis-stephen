@@ -103,3 +103,32 @@ SSCAN colors:1 1 COUNT 2
 # 1) "0"
 # 2) 1) "orange"
 ```
+
+## 65. Most Common Use Cases of Sets
+
+### Enforcing uniqueness of any value
+
+```sh
+SISMEMBER usernames:unique powerseller1
+```
+
+### Creating a relationship between different records
+
+```sh
+# Which items do user with ID 45 like?
+SMEMBERS users#45:likes
+
+# How many items does user with ID 45 like?
+SCARD users#45:likes
+
+# Does user with ID 45 like the item with ID 123?
+SISMEMBER users#45:likes 123
+```
+
+### Finding common attributes between different things
+
+```sh
+SINTER users#45:likes users#32:likes
+```
+
+### General list of elements where order doesn't matter
