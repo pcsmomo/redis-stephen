@@ -30,4 +30,8 @@ export const unlikeItem = async (itemId: string, userId: string) => {
 	}
 };
 
-export const commonLikedItems = async (userOneId: string, userTwoId: string) => {};
+export const commonLikedItems = async (userOneId: string, userTwoId: string) => {
+	const ids = await client.sInter([userLikesKey(userOneId), userLikesKey(userTwoId)]);
+
+	return getItems(ids);
+};
