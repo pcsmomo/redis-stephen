@@ -1,7 +1,9 @@
 import { client } from '$services/redis';
 import { userLikesKey } from '$services/keys';
 
-export const userLikesItem = async (itemId: string, userId: string) => {};
+export const userLikesItem = async (itemId: string, userId: string) => {
+	return client.sIsMember(userLikesKey(userId), itemId);
+};
 
 export const likedItems = async (userId: string) => {};
 
