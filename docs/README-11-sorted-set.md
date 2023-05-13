@@ -55,6 +55,7 @@ DEL products
 ZADD products 45 cpu
 ZADD products 10 keyboard
 ZADD products 55 power
+
 ZPOPMIN products 2
 # 1) "keyboard"
 # 2) "10"
@@ -65,9 +66,26 @@ DEL products
 ZADD products 45 cpu
 ZADD products 10 keyboard
 ZADD products 55 power
+
 ZPOPMAX products 2
 # 1) "power"
 # 2) "55"
 # 3) "cpu"
 # 4) "45"
+```
+
+## 76. Updating Scores
+
+- `ZINCRBY`: Increments the score of a member in a sorted set.
+
+```sh
+DEL products
+ZADD products 45 cpu
+ZADD products 10 keyboard
+ZADD products 55 power
+
+ZINCRBY products 15 cpu
+# "60"
+ZSCORE products cpu
+# "60"
 ```
