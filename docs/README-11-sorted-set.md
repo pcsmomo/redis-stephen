@@ -89,3 +89,46 @@ ZINCRBY products 15 cpu
 ZSCORE products cpu
 # "60"
 ```
+
+## 77. Querying a Sorted Set
+
+- `ZRANGE`: Returns members in a sorted set within a range of indexes.
+
+```sh
+DEL products
+ZADD products 45 cpu
+ZADD products 10 keyboard
+ZADD products 55 power
+
+ZRANGE products 1 2 WITHSCORES
+# 1) "cpu"
+# 2) "45"
+# 3) "power"
+# 4) "55"
+ZRANGE products 1 2
+# 1) "cpu"
+# 2) "power"
+
+ZRANGE products 0 48 BYSCORE
+# 1) "keyboard"
+# 2) "cpu"
+ZRANGE products 0 48 BYSCORE WITHSCORES
+# 1) "keyboard"
+# 2) "10"
+# 3) "cpu"
+# 4) "45"
+
+ZRANGE products -inf (55 BYSCORE WITHSCORES
+# 1) "keyboard"
+# 2) "10"
+# 3) "cpu"
+# 4) "45"
+
+ZRANGE products 1 2 REV # Reverse whole list first, then get index 1 to index 2
+# 1) "cpu"
+# 2) "keyboard"
+
+ZRANGE products 0 60 BYSCORE LIMIT 1 2  # skip 1 and get next 2 elements
+# 1) "cpu"
+# 2) "power"
+```
