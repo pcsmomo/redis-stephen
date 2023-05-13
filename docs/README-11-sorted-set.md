@@ -44,3 +44,30 @@ ZCOUNT products (10 (45   # exclusive
 ZCOUNT products -inf 40
 # (integer) 1
 ```
+
+## 75. Removing the Highest and Lowest Members
+
+- `ZPOPMIN`: Returns the lowest-scoring members from a sorted set after removing them. Deletes the sorted set if the last member was popped.
+- `ZPOPMAX`: Returns the highest-scoring members from a sorted set after removing them. Deletes the sorted set if the last member was popped.
+
+```sh
+DEL products
+ZADD products 45 cpu
+ZADD products 10 keyboard
+ZADD products 55 power
+ZPOPMIN products 2
+# 1) "keyboard"
+# 2) "10"
+# 3) "cpu"
+# 4) "45"
+
+DEL products
+ZADD products 45 cpu
+ZADD products 10 keyboard
+ZADD products 55 power
+ZPOPMAX products 2
+# 1) "power"
+# 2) "55"
+# 3) "cpu"
+# 4) "45"
+```
