@@ -189,6 +189,7 @@ Redis is fast
 - [Section 5: Hash](./docs/README-05-bash.md)
 - [Section 9: Set](./docs/README-09-set.md)
 - [Section 11: Sorted Set](./docs/README-11-sorted-set.md)
+- [Section 13: Sort](./docs/README-13-sort.md)
 
 ## Section 3: E-Commerce App Setup
 
