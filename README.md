@@ -28,6 +28,8 @@ Redis: The Complete Developer's Guide by Stephen Grider
     - 12-sorted-sets
       - `e-commerce-app/src/services/queries/users`
       - `e-commerce-app/src/services/queries/items`
+    - 13-relational-data
+      - `e-commerce-app/src/services/queries/items`
 
 # Details
 
