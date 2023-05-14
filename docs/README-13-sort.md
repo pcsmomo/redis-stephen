@@ -85,3 +85,23 @@ SORT books:likes BY nosort GET # GET books:*->title GET books:*->year
 # 8) "Good Book"
 # 9) "1950"
 ```
+
+## 95. A Few More Arguments
+
+```sh
+# it will also skip the sorting operation
+SORT books:likes BY AEADSOFJED GET # GET books:*->title GET books:*->year
+
+SORT books:likes BY nosort GET # GET books:*->title GET books:*->year ASC
+
+SORT books:likes BY nosort GET # GET books:*->title GET books:*->year DESC
+# 1) "good"
+# 2) "Good Book"
+# 3) "1950"
+# 4) "ok"
+# 5) "OK Book"
+# 6) "1940"
+# 7) "bad"
+# 8) "Bad Book"
+# 9) "1930"
+```
