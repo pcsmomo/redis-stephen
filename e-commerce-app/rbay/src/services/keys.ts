@@ -8,3 +8,4 @@ export const usernamesKey = 'usernames';
 // Items
 export const itemsKey = (itemId: string) => `items#${itemId}`;
 export const itemsByViewsKey = 'items:views';
+export const itemsByEndingAtKey = 'items:endingAt';
