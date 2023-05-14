@@ -1,7 +1,7 @@
 import type { CreateUserAttrs } from '$services/types';
 import { genId } from '$services/utils';
 import { client } from '$services/redis';
-import { usersKey, usernamesUniqueKey } from '$services/keys';
+import { usersKey, usernamesUniqueKey, usernamesKey } from '$services/keys';
 
 export const getUserByUsername = async (username: string) => {};
 
@@ -25,6 +25,10 @@ export const createUser = async (attrs: CreateUserAttrs) => {
 
 	await client.hSet(usersKey(id), serialize(attrs));
 	await client.sAdd(usernamesUniqueKey, attrs.username);
+	await client.zAdd(usernamesKey, {
+		value: attrs.username,
+		score: id
+	});
 
 	return id;
 };
