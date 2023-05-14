@@ -33,3 +33,16 @@ SORT books:likes LIMIT 1 2 ALPHA  # LIMIT (offset) (count)
 # 1) "good"
 # 2) "ok"
 ```
+
+## 93. Specifying the BY Argument
+
+```sh
+SORT books:likes BY books:*->year
+# 1) "bad"
+# 2) "ok"
+# 3) "good"
+```
+
+1. firstly, it gets a value of `year` column in matching key `book:*`
+2. it will sort by the column, books:\*->year
+3. return sorted members
