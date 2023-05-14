@@ -27,6 +27,7 @@ Redis: The Complete Developer's Guide by Stephen Grider
       - `e-commerce-app/src/services/queries/likes`
     - 12-sorted-sets
       - `e-commerce-app/src/services/queries/users`
+      - `e-commerce-app/src/services/queries/items`
 
 # Details
 
@@ -322,9 +323,5 @@ redis-cli
 FLUSHALL # or delete all keys
 FLUSHDB # the same
 ```
-
-## Section 12: Practice Time with Sorted Sets!
-
-### 79. Sorted Set Use Cases
 
 </details>
