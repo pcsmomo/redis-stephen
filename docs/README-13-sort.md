@@ -41,8 +41,47 @@ SORT books:likes BY books:*->year
 # 1) "bad"
 # 2) "ok"
 # 3) "good"
+SORT books:likes BY books:*->year GET #
 ```
 
 1. firstly, it gets a value of `year` column in matching key `book:*`
 2. it will sort by the column, books:\*->year
 3. return sorted members
+
+## 94. Joining Data with Sort
+
+```sh
+SORT books:likes BY books:*->year GET books:*->title
+# 1) "Bad Book"
+# 2) "OK Book"
+# 3) "Good Book"
+SORT books:likes BY books:*->year GET books:*->title GET books:*->year
+# 1) "Bad Book"
+# 2) "1930"
+# 3) "OK Book"
+# 4) "1940"
+# 5) "Good Book"
+# 6) "1950"
+SORT books:likes BY books:*->year GET # GET books:*->title GET books:*->year
+# 1) "bad"
+# 2) "Bad Book"
+# 3) "1930"
+# 4) "ok"
+# 5) "OK Book"
+# 6) "1940"
+# 7) "good"
+# 8) "Good Book"
+# 9) "1950"
+
+# sorted set is basically sorted by score already, so no need to sort and it makes it faster.
+SORT books:likes BY nosort GET # GET books:*->title GET books:*->year
+# 1) "bad"
+# 2) "Bad Book"
+# 3) "1930"
+# 4) "ok"
+# 5) "OK Book"
+# 6) "1940"
+# 7) "good"
+# 8) "Good Book"
+# 9) "1950"
+```
