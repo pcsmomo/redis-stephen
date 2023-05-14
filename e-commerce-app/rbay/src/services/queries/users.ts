@@ -27,7 +27,7 @@ export const createUser = async (attrs: CreateUserAttrs) => {
 	await client.sAdd(usernamesUniqueKey, attrs.username);
 	await client.zAdd(usernamesKey, {
 		value: attrs.username,
-		score: id
+		score: parseInt(id, 16)
 	});
 
 	return id;
