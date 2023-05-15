@@ -1,0 +1,20 @@
+# Section 16: More Practice with the E-Commerce App
+
+## 116. Transactions
+
+- `MULTI`: Starts a transaction.
+- `EXEC`: Executes all commands in a transaction.
+
+```sh
+MULTI
+# OK
+
+SET color red
+# QUEUED
+SET count 5
+# QUEUED
+
+EXEC
+# 1) OK
+# 2) OK
+```

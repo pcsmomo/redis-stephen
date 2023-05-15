@@ -395,4 +395,11 @@ but if the error coverage is fine, we can use it.
 - Use a lock
 - Use a custom `LUA` update script
 
+### 116. Transactions
+
+- Groups together one or more commands to run sequentially
+- Similar to pipelining, but some big differences!
+- Transactions cannot be undone/rolledback/reversed! (Unlike other databases)
+  - `MULTI SET color red SET count 5 EXEC`
+
 </details>
