@@ -18,3 +18,25 @@ EXEC
 # 1) OK
 # 2) OK
 ```
+
+## 117. Watching a Key with Transactions
+
+- `WATCH`: Monitors changes to keys to determine the execution of a transaction.
+
+```sh
+WATCH color
+# OK
+SET color blue
+# OK
+
+MULTI
+# OK
+
+SET color red
+# QUEUED
+SET count 5
+# QUEUED
+
+EXEC
+# (nil)
+```
