@@ -190,6 +190,7 @@ Redis is fast
 - [Section 9: Set](./docs/README-09-set.md)
 - [Section 11: Sorted Set](./docs/README-11-sorted-set.md)
 - [Section 13: Sort](./docs/README-13-sort.md)
+- [Section 14: HyperLogLog](./docs/README-14-hyperloglog.md)
 
 ## Section 3: E-Commerce App Setup
 
@@ -326,5 +327,13 @@ redis-cli
 FLUSHALL # or delete all keys
 FLUSHDB # the same
 ```
+
+## Section 14: HyperLogLog Structures
+
+### 98. HyperLogsLogs
+
+- Algorithm for approximately counting the number of unique elements
+- Similar to a set, but doesn't store the elements
+- Will seem useless at first glance
 
 </details>
