@@ -40,3 +40,38 @@ SET count 5
 EXEC
 # (nil)
 ```
+
+## 118. Isolated Connections for Transactions
+
+### Common pattern of using transaction
+
+```sh
+WATCH color
+
+GET color
+GET count
+
+######
+MULTI
+
+SET color red
+SET count 5
+
+EXEC
+```
+
+### To apply our e-commerce-app
+
+```sh
+WATCH item:a1
+
+HGETALL item:a1
+
+######
+MULTI
+
+HSET item:a1 amount 10 bids 1
+RPUSH items
+
+EXEC
+```
