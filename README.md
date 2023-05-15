@@ -336,4 +336,15 @@ FLUSHDB # the same
 - Similar to a set, but doesn't store the elements
 - Will seem useless at first glance
 
+### 99. When to use HyperLogsLogs
+
+> If using `SET`, it will take lots of storage as it should use `id`s in it.\
+> but with `HyperLogLog`, it would only take limited space, 12kb no matter how many elements are added
+
+The downside is that PFCOUNT give us an approximate count,\
+so if we add 1000 views, `PFCOUNT views` could give us with 0.81% error, so 991 to 1008
+
+So if the result should be accurate, HyperLogLog is not a good option\
+but if the error coverage is fine, we can use it.
+
 </details>
