@@ -71,3 +71,70 @@ LPOS temps 24 MAXLEN 4
 LPOS temps 24 MAXLEN 5
 # (integer) 4
 ```
+
+## 104. Trimming Lists
+
+- `LPOP`: Returns the first elements in a list after removing it. Deletes the list if the last element was popped.
+- `RPOP`: Returns and removes the last elements of a list. Deletes the list if the last element was popped.
+- `LSET`: Sets the value of an element in a list by its index.
+- `LTRIM`: Removes elements from both ends a list. Deletes the list if all elements were trimmed.
+
+```sh
+DEL temps
+
+RPUSH temps 25
+RPUSH temps 27
+RPUSH temps 25
+RPUSH temps 30
+RPUSH temps 24
+
+LINDEX temps 0
+# "25"
+LPOP temps
+# "25"
+LINDEX temps 0
+# "27"
+
+LINDEX temps -1
+# "24"
+RPOP temps 2
+# 1) "24"
+# 2) "30"
+LINDEX temps -1
+# "25"
+```
+
+```sh
+DEL temps
+
+RPUSH temps 25
+RPUSH temps 27
+RPUSH temps 25
+RPUSH temps 30
+RPUSH temps 24
+
+LINDEX temps 0
+# "25"
+LSET temps 0 35
+# OK
+LINDEX temps 0
+# "35"
+
+LINDEX temps -1
+LSET temps -1 35
+LINDEX temps -1
+# "35"
+
+LLEN temps
+# (integer) 5
+```
+
+```sh
+LTRIM temps 1 3 # it will leave only between index 1-3
+LINDEX temps 0
+# "27"
+LINDEX temps -1
+# "30"
+LLEN temps
+# (integer) 3
+```
