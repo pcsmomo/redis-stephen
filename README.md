@@ -387,4 +387,12 @@ but if the error coverage is fine, we can use it.
   }
   ```
 
+### 114. Understanding Concurrency Issues
+
+- Use atomic update command
+  - like `HINCRBY`, `HSETNX`
+- Use a transaction with the `WATCH` command
+- Use a lock
+- Use a custom `LUA` update script
+
 </details>
