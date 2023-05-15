@@ -138,3 +138,58 @@ LINDEX temps -1
 LLEN temps
 # (integer) 3
 ```
+
+## 105. Removing Elements
+
+- `LINSERT`: Inserts an element before or after another element in a list.
+- `LREM`: Removes elements from a list. Deletes the list if the last element was removed.
+
+```sh
+DEL temps
+
+RPUSH temps 25
+RPUSH temps 27
+RPUSH temps 25
+RPUSH temps 30
+RPUSH temps 24
+
+LINSERT temps BEFORE 30 15
+# (integer) 6
+LINDEX temps 3
+# "15"
+
+LINSERT temps AFTER 30 15
+# (integer) 6
+LRANGE temps 0 -1
+# 1) "25"
+# 2) "27"
+# 3) "25"
+# 4) "15"
+# 5) "30"
+# 6) "15"
+# 7) "24"
+```
+
+```sh
+DEL temps
+
+RPUSH temps 25
+RPUSH temps 27
+RPUSH temps 25
+RPUSH temps 30
+RPUSH temps 24
+
+# Remove two copy of 25 (from right to left: -2)
+LREM temps -2 25
+# (integer) 2
+LRANGE temps 0 -1
+# 1) "27"
+# 2) "30"
+# 3) "24"
+
+# Remove a copy of 25 (from left to right: 1)
+LREM temps 1 25
+
+# Remove all 25
+LREM temps 0 25
+```
