@@ -1,0 +1,27 @@
+# Section 15: Storing Collections with Lists
+
+## 102. Reading and Writing Data to a List
+
+- `LPUSH`: Prepends one or more elements to a list. Creates the key if it doesn't exist.
+- `RPUSH`: Appends one or more elements to a list. Creates the key if it doesn't exist.
+
+- `LLEN`: Returns the length of a list.
+- `LINDEX`: Returns an element from a list by its index.
+
+```sh
+LPUSH temps 25
+# (integer) 1
+RPUSH temps 27
+# (integer) 2
+
+LLEN temps
+# (integer) 2
+LINDEX temps 0
+# "25"
+LINDEX temps 1
+# "27"
+LINDEX temps -1
+# "27"
+LINDEX temps -2
+# "25"
+```

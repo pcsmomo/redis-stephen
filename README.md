@@ -191,6 +191,7 @@ Redis is fast
 - [Section 11: Sorted Set](./docs/README-11-sorted-set.md)
 - [Section 13: Sort](./docs/README-13-sort.md)
 - [Section 14: HyperLogLog](./docs/README-14-hyperloglog.md)
+- [Section 15: List](./docs/README-15-listmd)
 
 ## Section 3: E-Commerce App Setup
 
@@ -346,5 +347,15 @@ so if we add 1000 views, `PFCOUNT views` could give us with 0.81% error, so 991 
 
 So if the result should be accurate, HyperLogLog is not a good option\
 but if the error coverage is fine, we can use it.
+
+## Section 15: Storing Collections with Lists
+
+### 101. Lists
+
+- Sort an ordered list of strings
+- Not an array! Not an array! Not an array!
+- Implemented as a doubly-linked list
+- Often used for time-series data
+- You should probably use this less often than you think
 
 </details>

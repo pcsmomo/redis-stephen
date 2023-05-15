@@ -2,6 +2,9 @@
 
 ## 98. HyperLogsLogs
 
+- `PFADD`: Adds elements to a HyperLogLog key. Creates the key if it doesn't exist.
+- `PFCOUNT`: Returns the approximated cardinality of the set(s) observed by the HyperLogLog key(s).
+
 ```sh
 PFADD vegetables celery
 # (integer) 1
