@@ -379,9 +379,10 @@ but if the error coverage is fine, we can use it.
 - Create a new Item
 - type bid price, 10
 - Open Browser inspection
-- Choose the "Place Bid"
+- Choose the "Place Bid" button
 - execute the script below on the console
   ```js
+  // $0 means the selected element
   for (let i = 0; i < 15; i++) {
   	$0.click();
   }
@@ -401,5 +402,9 @@ but if the error coverage is fine, we can use it.
 - Similar to pipelining, but some big differences!
 - Transactions cannot be undone/rolledback/reversed! (Unlike other databases)
   - `MULTI SET color red SET count 5 EXEC`
+
+### 119. Solving Multiple Bids with a Transaction
+
+Test the concurrency issue as the same as "113. Issues with Bids"
 
 </details>
