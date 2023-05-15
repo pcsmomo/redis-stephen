@@ -193,3 +193,17 @@ LREM temps 1 25
 # Remove all 25
 LREM temps 0 25
 ```
+
+## 106. List Use Cases
+
+```sh
+DEL reviews
+
+RPUSH reviews b2
+RPUSH reviews a1
+
+HSET books:a1 title 'Good Book'
+HSET books:b2 title 'Bad Book'
+
+SORT reviews BY nosort GET books:*->title
+```

@@ -358,4 +358,16 @@ but if the error coverage is fine, we can use it.
 - Often used for time-series data
 - You should probably use this less often than you think
 
+### 106. List Use Cases
+
+- Append-only or prepend-only data
+  - E.g: temperature readings, stock values
+- When you only need the last/first N values of something
+- Your data has no sort order besides the order it was inserted
+
+#### Don't use lists if you have many items AND...
+
+- You need to apply some filtering criteria
+- Your data is sorted by some attribute
+
 </details>
