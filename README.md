@@ -374,4 +374,17 @@ but if the error coverage is fine, we can use it.
 
 [npm luxon - dates and times](https://www.npmjs.com/package/luxon)
 
+### 113. Issues with Bids - Concurrency issue
+
+- Create a new Item
+- type bid price, 10
+- Open Browser inspection
+- Choose the "Place Bid"
+- execute the script below on the console
+  ```js
+  for (let i = 0; i < 15; i++) {
+  	$0.click();
+  }
+  ```
+
 </details>
