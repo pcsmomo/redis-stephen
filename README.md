@@ -449,4 +449,15 @@ EVALSHA c301e0c5bc3538d2bad3fdbf2e281887e643ada4 0
 - `EVALSHA <ID> 0 '1' '2' '3' '4'`
   - we must provide it as string type
 
+### 128. Providing Key lists
+
+- `return redis.call('GET', 'color')`
+- `return redis.call('GET', KEYS[1])`
+  - `KEYS` is a global variable
+- `EVALSHA <ID> 1 color`
+  - `1` is a count of keys we are about to list
+- `EVALSHA <ID> 2 color items`
+- `EVALSHA <ID> 2 color items '4' '6'`
+  - 2 KEYS, 2 ARGV
+
 </details>

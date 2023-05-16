@@ -103,3 +103,31 @@ SCRIPT LOAD 'return 1 + tonumber(ARGV[1]) + tonumber(ARGV[2])'
 EVALSHA c64fe48b79aa91f6624b133ff9f588642817d8e4 0 '100' '200'
 # (integer) 301
 ```
+
+## 128. Providing Key lists
+
+```sh
+SET color red
+SCRIPT LOAD 'return redis.call("GET", "color")'
+# "5c319cc258f79a4a2387edac10122cb4ee3770ea"
+EVALSHA 5c319cc258f79a4a2387edac10122cb4ee3770ea 0
+# "red"
+
+DEL color
+# (integer) 1
+EVALSHA 5c319cc258f79a4a2387edac10122cb4ee3770ea 0
+# (nil)
+SET color blue
+# OK
+EVALSHA 5c319cc258f79a4a2387edac10122cb4ee3770ea 0
+# "blue"
+```
+
+```sh
+SET color red
+# OK
+SCRIPT LOAD 'return redis.call("GET", KEYS[1])'
+# "d1ad8397c172dc0a63e271f0c4c4250ca8d5d1fb"
+EVALSHA d1ad8397c172dc0a63e271f0c4c4250ca8d5d1fb 1 color
+# "red"
+```
