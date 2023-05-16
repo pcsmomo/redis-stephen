@@ -193,7 +193,7 @@ Redis is fast
 - [Section 14: HyperLogLog](./docs/README-14-hyperloglog.md)
 - [Section 15: List](./docs/README-15-list.md)
 - [Section 16: Transaction](./docs/README-16-transaction.md)
-- [Section 17: Lua Script](./docs/README-17-lua.md)
+- [Section 17: Lua && Lua Script with Redis](./docs/README-17-lua.md)
 
 ## Section 3: E-Commerce App Setup
 

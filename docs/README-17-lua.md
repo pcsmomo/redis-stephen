@@ -70,3 +70,22 @@ for k, v in pairs(user) do
     print(k, v)
 end
 ```
+
+## 126. Loading and Executing Scripts
+
+```sh
+# don't forget 'return'
+# if there are '' in your script, use ""
+SCRIPT LOAD 'return 1 + 1'
+# "c301e0c5bc3538d2bad3fdbf2e281887e643ada4"
+
+# don't forget 0
+EVALSHA c301e0c5bc3538d2bad3fdbf2e281887e643ada4 0
+# (integer) 2
+
+
+SCRIPT LOAD 'return 20 + 20'
+# "e5d2517a068b886e5baaeeb43bc1c4e384018fdf"
+EVALSHA e5d2517a068b886e5baaeeb43bc1c4e384018fdf 0
+# (integer) 40
+```
