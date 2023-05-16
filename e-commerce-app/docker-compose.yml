@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
     redis-stack-server:
-        container_name: redis-stack-server
+        container_name: redis-e-commerce
         image: redis/redis-stack-server
         ports:
             - 6379:6379
