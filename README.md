@@ -460,4 +460,18 @@ EVALSHA c301e0c5bc3538d2bad3fdbf2e281887e643ada4 0
 - `EVALSHA <ID> 2 color items '4' '6'`
   - 2 KEYS, 2 ARGV
 
+### 129. When to Use Scripts
+
+- Limiting the amount of data exchanged between server + redis
+- Solving some concurrency issues (more on this later)
+- Minimizing the number of round trips between server + . redis
+- ???
+
+#### Script down sides
+
+- Keys must be known ahead of time
+- Tough to test sdcripts
+- Loss of language features (E.G type checking with Typescript)
+- Another language to deal with (Lua)
+
 </details>
