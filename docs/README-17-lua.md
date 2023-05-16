@@ -37,3 +37,19 @@ if nil then
     print('wont run')
 end
 ```
+
+## 124. Handling Arrays
+
+```lua
+local colors = {'red', 'green', 'blue'}
+
+print(colors[1])  -- start from 1, not 0
+print(#colors)  -- length
+
+table.insert(colors, 'orange')
+print(colors[4])
+
+for i, v in ipairs(colors) do
+    print(i, v)  -- index, value
+end
+```
