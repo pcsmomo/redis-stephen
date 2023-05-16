@@ -407,4 +407,14 @@ but if the error coverage is fine, we can use it.
 
 Test the concurrency issue as the same as "113. Issues with Bids"
 
+## Section 17: Extending Redis with Scripting
+
+### 122. Lua Scripting
+
+[Lua Language](https://www.lua.org/)
+
+### 123. Basics of Lua
+
+- [Lua Online Playground](https://www.tutorialspoint.com/execute_lua_online.php)
+
 </details>
