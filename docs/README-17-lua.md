@@ -52,4 +52,21 @@ print(colors[4])
 for i, v in ipairs(colors) do
     print(i, v)  -- index, value
 end
+
+for i=5, 10 do
+    print(i)
+end
+```
+
+## 125. Handling Tables
+
+```lua
+-- LUA table == JS object
+local user = {id = 'a1', name = 'samantha'}
+
+print(user['id'])
+
+for k, v in pairs(user) do
+    print(k, v)
+end
 ```

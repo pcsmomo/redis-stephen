@@ -191,7 +191,9 @@ Redis is fast
 - [Section 11: Sorted Set](./docs/README-11-sorted-set.md)
 - [Section 13: Sort](./docs/README-13-sort.md)
 - [Section 14: HyperLogLog](./docs/README-14-hyperloglog.md)
-- [Section 15: List](./docs/README-15-listmd)
+- [Section 15: List](./docs/README-15-list.md)
+- [Section 16: Transaction](./docs/README-16-transaction.md)
+- [Section 17: Lua Script](./docs/README-17-lua.md)
 
 ## Section 3: E-Commerce App Setup
 
