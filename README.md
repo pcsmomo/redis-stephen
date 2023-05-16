@@ -419,4 +419,34 @@ Test the concurrency issue as the same as "113. Issues with Bids"
 
 - [Lua Online Playground](https://www.tutorialspoint.com/execute_lua_online.php)
 
+## 126. Loading and Executing Scripts
+
+#### SCRIPT
+
+- don't forget `return`
+- if there are '' in your script, use ""
+
+```sh
+SCRIPT LOAD 'return 1 + 1'
+# "c301e0c5bc3538d2bad3fdbf2e281887e643ada4"
+```
+
+#### EVALSHA
+
+- don't forget `0` at the last
+
+```sh
+# don't forget 0
+EVALSHA c301e0c5bc3538d2bad3fdbf2e281887e643ada4 0
+# (integer) 2
+```
+
+### 127. Providing Arguments
+
+- `return 1 + ARGV[1]`
+  - `ARGV` is a global variable
+  - `ARGV = {'1', '2', '3', '4'}`
+- `EVALSHA <ID> 0 '1' '2' '3' '4'`
+  - we must provide it as string type
+
 </details>

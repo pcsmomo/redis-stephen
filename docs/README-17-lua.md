@@ -89,3 +89,17 @@ SCRIPT LOAD 'return 20 + 20'
 EVALSHA e5d2517a068b886e5baaeeb43bc1c4e384018fdf 0
 # (integer) 40
 ```
+
+## 127. Providing Arguments
+
+```sh
+SCRIPT LOAD 'return 1 + tonumber(ARGV[1])'
+# "f54696c104acb23787e4d627c487221c6f79ace7"
+EVALSHA f54696c104acb23787e4d627c487221c6f79ace7 0 '100'
+# (integer) 101
+
+SCRIPT LOAD 'return 1 + tonumber(ARGV[1]) + tonumber(ARGV[2])'
+# "c64fe48b79aa91f6624b133ff9f588642817d8e4"
+EVALSHA c64fe48b79aa91f6624b133ff9f588642817d8e4 0 '100' '200'
+# (integer) 301
+```
