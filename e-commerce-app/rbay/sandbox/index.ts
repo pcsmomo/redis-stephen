@@ -48,7 +48,7 @@ const pause = async (p: number) => {
 
 const cookie = 'auth=9975918c%3AC9yBfEgOABd-oHEw3Ta4pOS3Z0M';
 const attempts = 50;
-const itemId = 'c93524';
+const itemId = 'e0cb6f';
 const start = performance.now();
 
 const run = async () => {
