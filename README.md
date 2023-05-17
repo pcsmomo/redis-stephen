@@ -474,4 +474,24 @@ EVALSHA c301e0c5bc3538d2bad3fdbf2e281887e643ada4 0
 - Loss of language features (E.G type checking with Typescript)
 - Another language to deal with (Lua)
 
+### 135. Issues with WATCH
+
+Concurrency test with sandbox
+
+1. Run 3 `rbay` apps in different ports 3000, 3001 and 3001
+   - `npm run dev -- --port 3001`
+2. Fill up the script in the `sandbox` folder.
+   - [135-concurrency.ts](./e-commerce-app/rbay/sandbox/135-concurrency.ts)
+   - `auth` cookie
+     - Create a user in the app
+     - copy the `auth` cookie in "application" from the browser
+     - paste it to the code
+   - `itemId`
+     - Create an item in the app and copy/paste the `itemId`
+3. open 3 terminal tabs, (each sandbox will use different `itemId`s)
+   - Create an item in the app and copy/paste the `itemId`
+   - run `npm run sandbox`
+
+![concurrency performance test](./images/135-concurrency.png)
+
 </details>
