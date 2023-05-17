@@ -518,4 +518,19 @@ I've changed `retryDelayMs` from 100ms to 10ms in [lock.ts](./e-commerce-app/rba
 
 ![concurrency solved!!](./images/140-lock-faster.png)
 
+### 142. Another Lock Issue - delete lockKey from other transaction
+
+### 145. One Last Issue - process takes too long (timeout)
+
+### 146. Providing Expiration Signals
+
+```js
+if (signal.expired) {
+	throw new Error("Lock expired, can't write anymore data");
+}
+```
+
+It seems to be working, but not 100% guaranteed.\
+Let's go with an advanced solution in the next lecture.
+
 </details>

@@ -4,13 +4,22 @@ import { client, withLock } from '$services/redis';
 import { DateTime } from 'luxon';
 import { getItem } from './items';
 
+// to simulate hanging process
+// const pause = (duration: number) => {
+// 	return new Promise((resolve) => {
+// 		setTimeout(resolve, duration);
+// 	});
+// };
+
 // Version 3: With Lock
 export const createBid = async (attrs: CreateBidAttrs) => {
-	return withLock(attrs.itemId, async () => {
+	return withLock(attrs.itemId, async (signal: any) => {
 		// 1) Fetching the item
 		// 2) Doing validation
 		// 3) Writing some data
 		const item = await getItem(attrs.itemId);
+
+		// await pause(5000);
 
 		// validate
 		if (!item) {
@@ -25,6 +34,10 @@ export const createBid = async (attrs: CreateBidAttrs) => {
 
 		// create bid
 		const serialized = serializeHistory(attrs.amount, attrs.createdAt.toMillis());
+
+		if (signal.expired) {
+			throw new Error("Lock expired, can't write anymore data");
+		}
 
 		return Promise.all([
 			client.rPush(bidHistoryKey(attrs.itemId), serialized),
