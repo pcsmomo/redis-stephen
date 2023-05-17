@@ -494,4 +494,11 @@ Concurrency test with sandbox
 
 ![concurrency performance test](./images/135-concurrency.png)
 
+### 137. Understanding the Goal
+
+- Our concurrency system will implement a simplified version of the `Redlock` algorithm
+  - [Redlock - glossary](https://redis.com/glossary/redlock/)
+  - [Redlock - implementations ](https://redis.io/docs/manual/patterns/distributed-locks/)
+- On any serioous project, use Relock instead of what we're building here
+
 </details>
