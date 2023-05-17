@@ -5,49 +5,58 @@ import { DateTime } from 'luxon';
 import { getItem } from './items';
 
 export const createBid = async (attrs: CreateBidAttrs) => {
-	return client.executeIsolated(async (isolatedClient) => {
-		await isolatedClient.watch(itemsKey(attrs.itemId));
-
-		const item = await getItem(attrs.itemId);
-
-		// validate
-		if (!item) {
-			throw new Error('Item does not exist');
-		}
-		if (item.price >= attrs.amount) {
-			throw new Error('Bid too low');
-		}
-		if (item.endingAt.diff(DateTime.now()).toMillis() < 0) {
-			throw new Error('Item closed to bidding');
-		}
-
-		// create bid
-		const serialized = serializeHistory(attrs.amount, attrs.createdAt.toMillis());
-
-		return isolatedClient
-			.multi()
-			.rPush(bidHistoryKey(attrs.itemId), serialized)
-			.hSet(itemsKey(item.id), {
-				bids: item.bids + 1,
-				price: attrs.amount,
-				highestBidUserId: attrs.userId
-			})
-			.zAdd(itemsByPriceKey, {
-				value: item.id,
-				score: attrs.amount
-			})
-			.exec();
-
-		// not using Promise.all because we want to execute the commands with transaction
-		// Promise.all([
-		// 	client.rPush(bidHistoryKey(attrs.itemId), serialized),
-		// 	client.hSet(itemsKey(item.id), {
-		// 		bids: item.bids + 1,
-		// 		price: attrs.amount,
-		// 		highestBidUserId: attrs.userId
-		// 	})
-		// ]);
+	// Version 3: With Lock
+	return withLock(attrs.itemId, async () => {
+		// 1) Fetching the item
+		// 2) Doing validation
+		// 3) Writing some data
 	});
+
+	// Version 2: Using Watch
+	// return client.executeIsolated(async (isolatedClient) => {
+	// 	await isolatedClient.watch(itemsKey(attrs.itemId));
+
+	// 	const item = await getItem(attrs.itemId);
+
+	// 	// validate
+	// 	if (!item) {
+	// 		throw new Error('Item does not exist');
+	// 	}
+	// 	if (item.price >= attrs.amount) {
+	// 		throw new Error('Bid too low');
+	// 	}
+	// 	if (item.endingAt.diff(DateTime.now()).toMillis() < 0) {
+	// 		throw new Error('Item closed to bidding');
+	// 	}
+
+	// 	// create bid
+	// 	const serialized = serializeHistory(attrs.amount, attrs.createdAt.toMillis());
+
+	// 	return isolatedClient
+	// 		.multi()
+	// 		.rPush(bidHistoryKey(attrs.itemId), serialized)
+	// 		.hSet(itemsKey(item.id), {
+	// 			bids: item.bids + 1,
+	// 			price: attrs.amount,
+	// 			highestBidUserId: attrs.userId
+	// 		})
+	// 		.zAdd(itemsByPriceKey, {
+	// 			value: item.id,
+	// 			score: attrs.amount
+	// 		})
+	// 		.exec();
+
+	// 	// Version 1: Using Promise.all
+	// 	// not using Promise.all because we want to execute the commands with transaction
+	// 	// Promise.all([
+	// 	// 	client.rPush(bidHistoryKey(attrs.itemId), serialized),
+	// 	// 	client.hSet(itemsKey(item.id), {
+	// 	// 		bids: item.bids + 1,
+	// 	// 		price: attrs.amount,
+	// 	// 		highestBidUserId: attrs.userId
+	// 	// 	})
+	// 	// ]);
+	// });
 };
 
 export const getBidHistory = async (itemId: string, offset = 0, count = 10): Promise<Bid[]> => {
