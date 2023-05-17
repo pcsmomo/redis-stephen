@@ -478,9 +478,15 @@ EVALSHA c301e0c5bc3538d2bad3fdbf2e281887e643ada4 0
 
 Concurrency test with sandbox
 
-1. Run 3 `rbay` apps in different ports 3000, 3001 and 3001
+1. Temporary comment out the validation in `bids.ts` to allow any prices
+   ```js
+   // if (item.price >= attrs.amount) {
+   //	 throw new Error('Bid too low');
+   // }
+   ```
+2. Run 3 `rbay` apps in different ports 3000, 3001 and 3001
    - `npm run dev -- --port 3001`
-2. Fill up the script in the `sandbox` folder.
+3. Fill up the script in the `sandbox` folder.
    - [135-concurrency.ts](./e-commerce-app/rbay/sandbox/135-concurrency.ts)
    - `auth` cookie
      - Create a user in the app
@@ -488,9 +494,10 @@ Concurrency test with sandbox
      - paste it to the code
    - `itemId`
      - Create an item in the app and copy/paste the `itemId`
-3. open 3 terminal tabs, (each sandbox will use different `itemId`s)
-   - Create an item in the app and copy/paste the `itemId`
-   - run `npm run sandbox`
+4. open 3 terminal tabs, <!-- (each sandbox will use different `itemId`s) -->
+   <!-- - Create an item in the app and copy/paste the `itemId` -->
+   - Cmd + Shift + i in Term2, then I can run scripts in multi tabs at the same time
+   - `npm run sandbox`
 
 ![concurrency performance test](./images/135-concurrency.png)
 
@@ -500,5 +507,15 @@ Concurrency test with sandbox
   - [Redlock - glossary](https://redis.com/glossary/redlock/)
   - [Redlock - implementations ](https://redis.io/docs/manual/patterns/distributed-locks/)
 - On any serioous project, use Relock instead of what we're building here
+
+### 140. It Works!
+
+![concurrency solved?](./images/140-lock.png)
+
+> But it is 10 times slower (2000ms) because it retries during locks.
+
+I've changed `retryDelayMs` from 100ms to 10ms in [lock.ts](./e-commerce-app/rbay/src/services/redis/lock.ts). It's a lot faster!
+
+![concurrency solved!!](./images/140-lock-faster.png)
 
 </details>
