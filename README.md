@@ -650,8 +650,37 @@ Stemming is used to reduce words down to a base form
 
 ### 159. Prefix Search
 
-Add `*` to a string to do prefix search
+- Add `*` to a string to do prefix search
+- minimum two characters are required. `fa*`(⭕), `f*`(❌)
+- And also it can be suffix or middle search
+  - `*st`, `*de*`
 
-> minimum two characters are required. `fa*`(⭕), `f*`(❌)
+### 160. Pre-Processing Search Criteria
+
+#### Prefix Search Pre-Processing: For auto completion
+
+1. User entered
+   - fast ca
+2. Split on space
+   - ['fast', 'ca']
+3. Append a `*` to last term
+   - ['fast', 'ca*']
+4. Maybe append a `*` to other terms?
+   - ['fast*', 'ca*']
+5. Join with a space or a `|` ('and' or 'or')
+   - fast* | ca*
+
+#### Fuzzy Search Pre-Processing: For actual search result
+
+1. User entered
+   - fast dar
+2. Split on space
+   - ['fast', 'dar']
+3. Wrap both terms with `%` or `%%` or `%%%`
+   - [%fast%, %dar%]
+4. Join with a space or a `|` ('and' or 'or')
+   - %fast% | %dar%
+
+> Those specific algorithm decisions are up to you.
 
 </details>
