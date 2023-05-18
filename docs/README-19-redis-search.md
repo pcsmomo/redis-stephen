@@ -166,3 +166,33 @@ FT.SEARCH idx:cars '@name:(%%%mode%%%)'
 FT.SEARCH idx:cars '@name:(%%%mod%%%)'
 #  1) (integer) 6
 ```
+
+## 159. Prefix Search
+
+Add `*` to a string to do prefix search
+
+> minimum two characters are required. `fa*`(⭕), `f*`(❌)
+
+```sh
+FT.SEARCH idx:cars '@name:(fa*)'
+FT.SEARCH idx:cars '@name:(ol*)'
+FT.SEARCH idx:cars '@name:(ca*)'
+```
+
+it can be suffix or middle search
+
+```sh
+FT.SEARCH idx:cars '@name:(*st)'
+# 1) (integer) 2
+# 2) "cars#a1"
+# 3) 1) "name"
+#    2) "fast car"
+# 4) "cars#f1"
+# 5) 1) "name"
+#    2) "test car"
+FT.SEARCH idx:cars '@name:(*ode*)'
+# 1) (integer) 1
+# 2) "cars#e1"
+# 3) 1) "name"
+#    2) "modern car"
+```

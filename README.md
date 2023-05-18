@@ -31,6 +31,21 @@ Redis: The Complete Developer's Guide by Stephen Grider
     - 13-relational-data
       - `e-commerce-app/src/services/queries/items`
 
+## Commands and practice
+
+[⭐️ Redis Commands Documentation](https://redis.io/commands)
+
+- [Section 2: Basic commands](./docs/README-02-basic.md)
+- [Section 5: Hash](./docs/README-05-bash.md)
+- [Section 9: Set](./docs/README-09-set.md)
+- [Section 11: Sorted Set](./docs/README-11-sorted-set.md)
+- [Section 13: Sort](./docs/README-13-sort.md)
+- [Section 14: HyperLogLog](./docs/README-14-hyperloglog.md)
+- [Section 15: List](./docs/README-15-list.md)
+- [Section 16: Transaction](./docs/README-16-transaction.md)
+- [Section 17: Lua && Lua Script with Redis](./docs/README-17-lua.md)
+- [Section 19: Querying Data with RediSearch](./docs/README-19-redis-search.md)
+
 # Details
 
 <details open> 
@@ -180,21 +195,6 @@ Redis is fast
 ### 9. Documentation on Commands
 
 [⭐️ Redis Commands Documentation](https://redis.io/commands)
-
-# Documentations
-
-## Commands and practice
-
-- [Section 2: Basic commands](./docs/README-02-basic.md)
-- [Section 5: Hash](./docs/README-05-bash.md)
-- [Section 9: Set](./docs/README-09-set.md)
-- [Section 11: Sorted Set](./docs/README-11-sorted-set.md)
-- [Section 13: Sort](./docs/README-13-sort.md)
-- [Section 14: HyperLogLog](./docs/README-14-hyperloglog.md)
-- [Section 15: List](./docs/README-15-list.md)
-- [Section 16: Transaction](./docs/README-16-transaction.md)
-- [Section 17: Lua && Lua Script with Redis](./docs/README-17-lua.md)
-- [Section 19: Querying Data with RediSearch](./docs/README-19-redis-search.md)
 
 ## Section 3: E-Commerce App Setup
 
@@ -640,5 +640,18 @@ Stemming is used to reduce words down to a base form
 
 - [Stemming demo](https://snowballstem.org/demo.html)
 - fasting, fastly, fasts -> fast
+
+### 158. Fuzzy Search
+
+- Wrap a term with `%` to include strings that have a slight different in characters
+  - it allows only 1 character mismatch
+  - `%%`: allows 2 characters mismatch
+  - `%%%`: allows up to 3 characters mismatch, but no more
+
+### 159. Prefix Search
+
+Add `*` to a string to do prefix search
+
+> minimum two characters are required. `fa*`(⭕), `f*`(❌)
 
 </details>
