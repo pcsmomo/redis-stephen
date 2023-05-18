@@ -537,4 +537,18 @@ Let's go with an advanced solution in the next lecture.
 
 [Proxy - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
+## Section 18: Understanding and Solving Concurrency Issues
+
+### 149. Redis Core vs Redis Stack
+
+- Without Redis Stack, you will have to manually set up modules to Redis Core
+
+#### Redis Stack
+
+- RedisSearch
+- RedisJSON
+- RedisGraph
+- RedisTimeSeries
+- RedisBloom
+
 </details>
