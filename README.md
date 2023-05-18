@@ -683,4 +683,16 @@ Stemming is used to reduce words down to a base form
 
 > Those specific algorithm decisions are up to you.
 
+## Section 20: Search in Action
+
+### 161. Search Implementation
+
+#### Index Creation in Apps
+
+1. Figure out what prefix the index will use
+2. Decide on the fields/types the index will look at
+   - `name`, `description`
+3. Make a function to create the index
+4. Decide when to create the index
+
 </details>
