@@ -1,5 +1,7 @@
 # Section 19: Querying Data with RediSearch
 
+[Redis Commands: Search](https://redis.io/commands/?group=search)
+
 ## 152. Creating and Using an Index
 
 - `FT.CREATE`: Creates an index with the given spec

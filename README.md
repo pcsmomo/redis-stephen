@@ -573,4 +573,29 @@ Let's go with an advanced solution in the next lecture.
 2. Run a query: `FT.SEARCH`
    - Using the index, find items with a particular name, color, price
 
+### 152. Creating and Using an Index
+
+- `FT.CREATE`: Creates an index with the given spec
+- `FT.SEARCH`: Searches the index with a textual query, returning either documents or just ids
+  - `()`: for TEXT
+  - `{}`: for TAG
+  - `[]`: for NUMERIC
+
+### 153. Details on Indexes
+
+- `FT.DROPINDEX`: Deletes the index
+
+- Querying
+  - Gives the **EXACT** result you ask for
+  - Examples
+    - Get all card made in 1955 with a color of red
+    - Get all cars made before 1960 with a name of 'fast car'
+    - Get all cars with a color of blue
+- Searching
+  - Gives results that **BEST ANSWER** your question
+  - Examples
+    - Get all cars with a name like 'car that goes fast'
+    - Get all cars related to '90 blue fast'
+    - Get all cars related to 'gast var'
+
 </details>
