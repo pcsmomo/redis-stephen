@@ -585,17 +585,35 @@ Let's go with an advanced solution in the next lecture.
 
 - `FT.DROPINDEX`: Deletes the index
 
-- Querying
+- Querying - Use `TAG`
   - Gives the **EXACT** result you ask for
   - Examples
     - Get all card made in 1955 with a color of red
     - Get all cars made before 1960 with a name of 'fast car'
     - Get all cars with a color of blue
-- Searching
+  - Examples again
+    - ID references to another record
+    - Color of a product
+    - Country that a product is made in
+- Searching - Use `TEXT`
   - Gives results that **BEST ANSWER** your question
   - Examples
     - Get all cars with a name like 'car that goes fast'
     - Get all cars related to '90 blue fast'
     - Get all cars related to 'gast var'
+  - Examples again
+    - Product names
+    - Product descriptions
+    - Review of a product
+
+### 154. Index Field Types
+
+| type    | description                       |
+| ------- | --------------------------------- |
+| NUMERIC | This field contains numbers       |
+| GEO     | Geographic coordinates            |
+| VECTOR  | Similarity queries                |
+| TAG     | Used for exact string lookups     |
+| TEXT    | Supports fuzzy search, typos, etc |
 
 </details>
