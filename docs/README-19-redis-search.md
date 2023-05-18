@@ -105,7 +105,31 @@ FT.SEARCH idx:cars "@color:{'light blue'}"
 # FT.SEARCH idx:cars '@color:{"light blue"}'  # (error) Syntax error at offset 8 near color
 ```
 
-> All 'stop' words are removed from tag and text queries!!!\
-> `@cities:{ to | a | or }` -> `@cities:{ }`\
-> a, is, the, an, and, are, as, at, be, but, by, for, if, in, into, it, no, not, of, on, or, such, that, their, then, there, these, they, this, to, was, will, with\
-> [Stop words](https://redis.io/docs/stack/search/reference/stopwords/)
+### Stop words
+
+[Stop words](https://redis.io/docs/stack/search/reference/stopwords/)
+
+- All 'stop' words are removed from tag and text queries!!!
+- `@cities:{ to | a | or }` -> `@cities:{ }`
+- a, is, the, an, and, are, as, at, be, but, by, for, if, in, into, it, no, not, of, on, or, such, that, their, then, there, these, they, this, to, was, will, with\
+
+## 157. Text Queries
+
+(a fast, fast car!!!) -> [fast, fast, car]
+
+### Stemming
+
+Stemming is used to reduce words down to a base form
+
+- [Stemming demo](https://snowballstem.org/demo.html)
+- fasting, fastly, fasts -> fast
+
+```sh
+FT.SEARCH idx:cars '@name:(fast)'
+FT.SEARCH idx:cars '@name:(fast car)' # 'fast' and 'car'
+FT.SEARCH idx:cars '@name:(fast | car)' # 'fast or 'car'
+FT.SEARCH idx:cars '-@name:(fast)' # does not include 'fast'
+
+FT.SEARCH idx:cars '@name:(a fast fast car)'
+FT.SEARCH idx:cars '@name:(fastly)'
+```
