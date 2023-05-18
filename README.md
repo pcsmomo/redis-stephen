@@ -194,6 +194,7 @@ Redis is fast
 - [Section 15: List](./docs/README-15-list.md)
 - [Section 16: Transaction](./docs/README-16-transaction.md)
 - [Section 17: Lua && Lua Script with Redis](./docs/README-17-lua.md)
+- [Section 19: Querying Data with RediSearch](./docs/README-19-redis-search.md)
 
 ## Section 3: E-Commerce App Setup
 
@@ -563,5 +564,13 @@ Let's go with an advanced solution in the next lecture.
 - Option #3
   - Redis Labs Manager
   - Redis Labs runs a copy of Redis for you on AWS/GC/Azure with a few modules preinstalled
+
+### 151. Overview on Search
+
+1. Create an index (Only once): `FT.CREATE`
+   - Find all the keys that start with `items#`
+   - Out of those, record some info about the fields `name`, `color`, and `price`
+2. Run a query: `FT.SEARCH`
+   - Using the index, find items with a particular name, color, price
 
 </details>
