@@ -616,4 +616,8 @@ Let's go with an advanced solution in the next lecture.
 | TAG     | Used for exact string lookups     |
 | TEXT    | Supports fuzzy search, typos, etc |
 
+### 155. Numeric Queries
+
+[Query syntax](https://redis.io/docs/stack/search/reference/query_syntax/)
+
 </details>

@@ -77,3 +77,16 @@ FT.SEARCH idx:cars '@year:[1955 1980]'
 #    5) "year"
 #    6) "1970"
 ```
+
+## 155. Numeric Queries
+
+```sh
+FT.SEARCH idx:cars '@year:[1955 1980] @color:{blue}'
+# FT.SEARCH idx:locations '@cities:{ New York | Los Angeles | Barcelona }'
+
+FT.SEARCH idx:cars '@year:[1955 1980]'
+FT.SEARCH idx:cars '@year:[(1955 (1980]' # exclusive -> (1956-1979)
+FT.SEARCH idx:cars '@year:[1955 +inf]'
+FT.SEARCH idx:cars '@year:[-inf 1980]'
+FT.SEARCH idx:cars '-@year:[1955 1980]' # not including 1955-1980
+```
