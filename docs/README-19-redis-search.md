@@ -90,3 +90,22 @@ FT.SEARCH idx:cars '@year:[1955 +inf]'
 FT.SEARCH idx:cars '@year:[-inf 1980]'
 FT.SEARCH idx:cars '-@year:[1955 1980]' # not including 1955-1980
 ```
+
+## 156. Tag Queries
+
+```sh
+HSET cars#e1 name 'modern car' color 'light blue' year 2000
+HSET cars#f1 name 'test car' color "light green" year 2010
+
+FT.SEARCH idx:cars '@color:{blue}'
+FT.SEARCH idx:cars '-@color:{blue}'
+FT.SEARCH idx:cars '@color:{red | blue}'
+FT.SEARCH idx:cars '@color:{light\ blue}'
+FT.SEARCH idx:cars "@color:{'light blue'}"
+# FT.SEARCH idx:cars '@color:{"light blue"}'  # (error) Syntax error at offset 8 near color
+```
+
+> All 'stop' words are removed from tag and text queries!!!\
+> `@cities:{ to | a | or }` -> `@cities:{ }`\
+> a, is, the, an, and, are, as, at, be, but, by, for, if, in, into, it, no, not, of, on, or, such, that, their, then, there, these, they, this, to, was, will, with\
+> [Stop words](https://redis.io/docs/stack/search/reference/stopwords/)
