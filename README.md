@@ -533,4 +533,8 @@ if (signal.expired) {
 It seems to be working, but not 100% guaranteed.\
 Let's go with an advanced solution in the next lecture.
 
+### 147. Alternate Expiration Solution
+
+[Proxy - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
+
 </details>
