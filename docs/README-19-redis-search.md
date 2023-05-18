@@ -133,3 +133,36 @@ FT.SEARCH idx:cars '-@name:(fast)' # does not include 'fast'
 FT.SEARCH idx:cars '@name:(a fast fast car)'
 FT.SEARCH idx:cars '@name:(fastly)'
 ```
+
+## 158. Fuzzy Search
+
+- Wrap a term with `%` to include strings that have a slight different in characters
+  - it allows only 1 character mismatch
+  - `%%`: allows 2 characters mismatch
+  - `%%%`: allows up to 3 characters mismatch, but no more
+
+```sh
+FT.SEARCH idx:cars '@name:(%dar%)'
+FT.SEARCH idx:cars '@name:(%nww%)'
+
+FT.SEARCH idx:cars '@name:(%%e%%)'
+
+FT.SEARCH idx:cars '@name:(%%%moder%%%)'
+# 1) (integer) 1
+# 2) "cars#e1"
+# 3) 1) "name"
+#    2) "modern car"
+FT.SEARCH idx:cars '@name:(%%%mode%%%)'
+# 1) (integer) 3
+# 2) "cars#c1"
+# 3) 1) "name"
+#    2) "old car"
+# 4) "cars#d1"
+# 5) 1) "name"
+#    2) "new car"
+# 6) "cars#e1"
+# 7) 1) "name"
+#    2) "modern car"
+FT.SEARCH idx:cars '@name:(%%%mod%%%)'
+#  1) (integer) 6
+```

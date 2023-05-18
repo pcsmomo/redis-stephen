@@ -620,4 +620,25 @@ Let's go with an advanced solution in the next lecture.
 
 [Query syntax](https://redis.io/docs/stack/search/reference/query_syntax/)
 
+### 156. Tag Queries
+
+#### Stop words
+
+[Stop words](https://redis.io/docs/stack/search/reference/stopwords/)
+
+- All 'stop' words are removed from tag and text queries!!!
+- `@cities:{ to | a | or }` -> `@cities:{ }`
+- a, is, the, an, and, are, as, at, be, but, by, for, if, in, into, it, no, not, of, on, or, such, that, their, then, there, these, they, this, to, was, will, with\
+
+### 157. Text Queries
+
+(a fast, fast car!!!) -> [fast, fast, car]
+
+### Stemming
+
+Stemming is used to reduce words down to a base form
+
+- [Stemming demo](https://snowballstem.org/demo.html)
+- fasting, fastly, fasts -> fast
+
 </details>
