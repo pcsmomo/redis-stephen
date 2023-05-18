@@ -537,7 +537,7 @@ Let's go with an advanced solution in the next lecture.
 
 [Proxy - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
 
-## Section 18: Understanding and Solving Concurrency Issues
+## Section 19: Querying Data with RediSearch
 
 ### 149. Redis Core vs Redis Stack
 
@@ -550,5 +550,18 @@ Let's go with an advanced solution in the next lecture.
 - RedisGraph
 - RedisTimeSeries
 - RedisBloom
+
+### 150. Using Modules in Production
+
+- Option #1
+  - AWS/GC runs Redis for you.
+  - Can't use modules here as they uses basic redis core.
+  - So you should know how to use basic redis core
+- Option #2
+  - Run Redis yourself on a cloud provider
+  - with VM or Docker
+- Option #3
+  - Redis Labs Manager
+  - Redis Labs runs a copy of Redis for you on AWS/GC/Azure with a few modules preinstalled
 
 </details>
