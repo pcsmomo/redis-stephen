@@ -1,0 +1,95 @@
+{
+	"total": 206,
+	"documents": [
+		{
+			"id": "items#9801b1",
+			"value": {
+				"views": "3",
+				"likes": "1",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/128.jpg",
+				"price": "9",
+				"name": "Sleek Steel Chair",
+				"createdAt": "1684535378822",
+				"highestBidUserId": "4e28ac",
+				"ownerId": "0d620b",
+				"id": "9801b1",
+				"bids": "2",
+				"endingAt": "1684536243812",
+				"status": "active",
+				"description": "This cedar chair is made from natural materials, so it's a great choice for people who care about the environment. It's also very sturdy and comfortable, making it a great choice for everyday use."
+			}
+		},
+		{
+			"id": "items#bbf6f1",
+			"value": {
+				"views": "4",
+				"likes": "1",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/174.jpg",
+				"price": "5",
+				"name": "Small Cotton Chair",
+				"createdAt": "1684535378818",
+				"highestBidUserId": "cc20ef",
+				"ownerId": "b6b745",
+				"id": "bbf6f1",
+				"bids": "1",
+				"endingAt": "1684560783806",
+				"status": "active",
+				"description": "This pine chair is perfect for sitting in while you relax. The chair is sturdy and comfortable, and the natural wood finish gives it a rustic look."
+			}
+		},
+		{
+			"id": "items#b9eee1",
+			"value": {
+				"views": "4",
+				"likes": "0",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/190.jpg",
+				"price": "23",
+				"name": "Handmade Frozen Chair",
+				"createdAt": "1684535378822",
+				"highestBidUserId": "3233c1",
+				"ownerId": "7d4a36",
+				"id": "b9eee1",
+				"bids": "6",
+				"endingAt": "1684549893813",
+				"status": "active",
+				"description": "Choosing the right lounge chair is important because you'll be spending plenty of time relaxing in it! Be sure to consider the size of the chair, its construction materials, and how comfortable it looks and feels."
+			}
+		},
+		{
+			"id": "items#187c34",
+			"value": {
+				"views": "3",
+				"likes": "1",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/60.jpg",
+				"price": "18",
+				"name": "Fantastic Plastic Chair",
+				"createdAt": "1684535378822",
+				"highestBidUserId": "e335a1",
+				"ownerId": "eb76a6",
+				"id": "187c34",
+				"bids": "3",
+				"endingAt": "1684567625813",
+				"status": "active",
+				"description": "The wingback chair is a popular design that originated in England in the 1700s. It has large, curving wings that extend from the back of the chair to provide support for the user's head and neck. The Morris chair is a type of rocker chair that was first designed in England in 1866 by William Morris. It has a low seat and wide arms that allow users to relax in it like they would in a rocking chair. The ladderback chair is so named because of its distinctive vertical slats running down its back. This style of chair became popular in America during the 1800s, and it is still commonly used today as an indoor or outdoor dining room chair. The barrel chair gets its name from its shape, which is similar to that"
+			}
+		},
+		{
+			"id": "items#d24223",
+			"value": {
+				"views": "3",
+				"likes": "0",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/161.jpg",
+				"price": "47",
+				"name": "Awesome Fresh Chair",
+				"createdAt": "1684535378826",
+				"highestBidUserId": "912e26",
+				"ownerId": "db1c73",
+				"id": "d24223",
+				"bids": "6",
+				"endingAt": "1684564326819",
+				"status": "active",
+				"description": "Made of rubberwood with a natural finish, this desk is sturdy and stylish. The table has a spacious top that's perfect for working on your laptop or completing projects, and the four drawers provide plenty of storage space for office supplies and other belongings. Plus, the simple design will complement any decor."
+			}
+		}
+	]
+}

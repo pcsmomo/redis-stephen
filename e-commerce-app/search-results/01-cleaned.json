@@ -1,0 +1,95 @@
+{
+	"total": 206,
+	"documents": [
+		{
+			"id": "items#86dc3f",
+			"value": {
+				"views": "3",
+				"likes": "2",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/188.jpg",
+				"price": "4",
+				"name": "Sleek Fresh Sausages",
+				"createdAt": "1684535378825",
+				"highestBidUserId": "dad894",
+				"ownerId": "dfa35f",
+				"id": "86dc3f",
+				"bids": "1",
+				"endingAt": "1684545151817",
+				"status": "active",
+				"description": "deck chairs are a type of furniture that can be used outdoors or indoors. They are typically made out of wood, but can also be made out of other materials such as metal or plastic. Deck chairs come in a variety of styles and colors, and some versions even have builtin reclining mechanisms."
+			}
+		},
+		{
+			"id": "items#eceebf",
+			"value": {
+				"views": "5",
+				"likes": "3",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/137.jpg",
+				"price": "17",
+				"name": "Sleek Steel Tuna",
+				"createdAt": "1684535378822",
+				"highestBidUserId": "b21910",
+				"ownerId": "01cc77",
+				"id": "eceebf",
+				"bids": "4",
+				"endingAt": "1684553811812",
+				"status": "active",
+				"description": "There are many different types of dining chairs to choose from, and it can be tricky to decide which one is right for you. Some factors to consider when selecting a chair include the material, color, style, and size."
+			}
+		},
+		{
+			"id": "items#753fbd",
+			"value": {
+				"views": "6",
+				"likes": "2",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/39.jpg",
+				"price": "28",
+				"name": "Rustic Steel Mouse",
+				"createdAt": "1684535378822",
+				"highestBidUserId": "01cc77",
+				"ownerId": "475929",
+				"id": "753fbd",
+				"bids": "5",
+				"endingAt": "1684561064813",
+				"status": "active",
+				"description": "Lounge chairs provide a comfortable place to relax and recline in your home. They come in a variety of styles, including chaise lounge chairs, wingback lounge chairs, and standard armchairs. Some feature builtin cushions or pillows for added comfort, while others have adjustable backrests to help you find the perfect position for watching TV or reading a book."
+			}
+		},
+		{
+			"id": "items#b6e728",
+			"value": {
+				"views": "6",
+				"likes": "2",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/187.jpg",
+				"price": "29",
+				"name": "Incredible Frozen Salad",
+				"createdAt": "1684535378820",
+				"highestBidUserId": "c81e16",
+				"ownerId": "45166b",
+				"id": "b6e728",
+				"bids": "4",
+				"endingAt": "1684569791810",
+				"status": "active",
+				"description": "There are many different types of lounge chairs available on the market today. Some are more traditional, with wooden frames and padded seats and backs. Others are made from metal or plastic, and may have more unconventional designs. Lounge chairs can be used indoors or outdoors, and can come in a variety of colors and finishes. They are often comfortable enough to serve as beds, making them a popular choice for guests."
+			}
+		},
+		{
+			"id": "items#f42810",
+			"value": {
+				"views": "7",
+				"likes": "1",
+				"imageUrl": "https://realrealreal-redis.s3.amazonaws.com/188.jpg",
+				"price": "12",
+				"name": "Awesome Frozen Fish",
+				"createdAt": "1684535378823",
+				"highestBidUserId": "01cc77",
+				"ownerId": "a11be0",
+				"id": "f42810",
+				"bids": "2",
+				"endingAt": "1684545147814",
+				"status": "active",
+				"description": "Dining chairs come in many different shapes and sizes, but they all have one common purpose: to provide a comfortable seat at the dinner table. Some dining chairs are designed for comfort and style, while others are more utilitarian and meant to be used as temporary seating."
+			}
+		}
+	]
+}

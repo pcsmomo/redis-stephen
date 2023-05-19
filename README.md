@@ -766,4 +766,12 @@ npm run dev
   - TF \* IDF for good = (1 / 2) \* log(1 + 2 / 2) = .15 \* 2 = .3
   - sum = .45
 
+### 168. Applying Weights to Fields
+
+If we want to weight to `name` 5 times more as `name` is way more important than `description`
+
+```sh
+(@name:(chair)=>{ $weight: 5.0 } | @description:(chair))
+```
+
 </details>

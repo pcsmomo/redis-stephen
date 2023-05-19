@@ -15,13 +15,18 @@ export const searchItems = async (term: string, size: number = 5) => {
 		return [];
 	}
 
+	// const query = `(@name:(${cleaned})) | (@description:(${cleaned}))`; // the same result as cleaned
+	const query = `(@name:(${cleaned}) => { $weight: 5.0}) | (@description:(${cleaned}))`; // weight to name
+
 	// Use the client to do an actual search
-	const results = await client.ft.search(itemsIndexKey, cleaned, {
+	const results = await client.ft.search(itemsIndexKey, query, {
 		LIMIT: {
 			from: 0,
 			size
 		}
 	});
+
+	// console.log(JSON.stringify(results));
 
 	// Deserialize and return the research results
 	return results.documents.map(({ id, value }) => deserialize(id, value as any));
