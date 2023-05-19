@@ -196,3 +196,13 @@ FT.SEARCH idx:cars '@name:(*ode*)'
 # 3) 1) "name"
 #    2) "modern car"
 ```
+
+## 163. When to Create the Index?
+
+- `FT._LIST`: Returns a list of all existing indexes
+
+```sh
+FT._LIST
+# 1) "idx:cars"
+# 2) "idx:items"
+```
