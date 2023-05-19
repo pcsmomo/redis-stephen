@@ -695,4 +695,13 @@ Stemming is used to reduce words down to a base form
 3. Make a function to create the index
 4. Decide when to create the index
 
+### 166. Seeding Some Fake Data
+
+This command will delete all data and generate a bunch of data
+
+```sh
+npm run seed
+npm run dev
+```
+
 </details>
