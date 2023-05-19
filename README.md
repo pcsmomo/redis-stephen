@@ -704,4 +704,66 @@ npm run seed
 npm run dev
 ```
 
+### 167. RediSearch and TF-IDF
+
+[TF-IDF algorithm](https://www.capitalone.com/tech/machine-learning/understanding-tf-idf/)
+
+- TF \* IDF = Score for each string (document)
+
+- TF (Term Frequency): (# times search term appears in string) / (# total words in string)
+- IDF (Inverse Document Frequency) = log(1 + (# strings / # strings containing the term))
+  - # strings: total documents
+  - # strings containing the term: document that contains the term
+
+#### Example
+
+#### Case 1: one term
+
+- Term: 'fruit'
+- Document1: 'Excellent fruit, good, fantastic, tasty fruit'
+  - TF \* IDF = (2 / 6) \* log(1 + 2 / 2) = .1
+    ```js
+    (2 / 6) * Math.log10(1 + 2 / 2);
+    // 0.10034333188799373
+    ```
+    ```py
+    2 / 6 * math.log10(1 + 2 / 2)
+    # 0.10034333188799373
+    ```
+- Document2: 'Good fruit'
+
+  - TF \* IDF = (1 / 2) \* log(1 + 2 / 2) = .15
+    ```js
+    (1 / 2) * Math.log10(1 + 2 / 2);
+    // 0.1505149978319906
+    ```
+
+#### Case 2: two terms
+
+- Term: '[fruit, good]'
+- Document1: 'Excellent fruit, good, fantastic, tasty fruit'
+  - TF \* IDF for fruit = (2 / 6) \* log(1 + 2 / 2) = .1
+  - TF \* IDF for good = (1 / 6) \* log(1 + 2 / 2) = .05
+  - sum = .15
+    ```js
+    (1 / 6) * Math.log10(1 + 2 / 2);
+    // 0.050171665943996864
+    ```
+- Document2: 'Good fruit'
+  - TF \* IDF for fruit = (1 / 2) \* log(1 + 2 / 2) = .15
+  - TF \* IDF for good = (1 / 2) \* log(1 + 2 / 2) = .15
+  - sum = .3
+
+#### Case 3: two terms, but one is more important
+
+- Term: '[fruit, good x 2 weight]'
+- Document1: 'Excellent fruit, good, fantastic, tasty fruit'
+  - TF \* IDF for fruit = (2 / 6) \* log(1 + 2 / 2) = .1
+  - TF \* IDF for good = (1 / 6) \* log(1 + 2 / 2) = .05 \* 2 = .1
+  - sum = .2
+- Document2: 'Good fruit'
+  - TF \* IDF for fruit = (1 / 2) \* log(1 + 2 / 2) = .15
+  - TF \* IDF for good = (1 / 2) \* log(1 + 2 / 2) = .15 \* 2 = .3
+  - sum = .45
+
 </details>
