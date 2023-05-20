@@ -17,3 +17,44 @@ XADD fruits * name strawberry color red
 # color: key
 # red: value
 ```
+
+## 178. Consuming Streams with XREAD
+
+- `XREAD`: Returns messages from multiple streams with IDs greater than the ones requested. Blocks until a message is available otherwise.
+
+```sh
+# Read all messages from the beginning of time
+XREAD STREAMS fruits 0-0
+# 1) 1) "fruits"
+#    2) 1) 1) "1684573584965-0"
+#          2) 1) "name"
+#             2) "strawberry"
+#             3) "color"
+#             4) "red"
+
+# Read all messages after (but not including) this timestamp
+XREAD STREAMS fruits 1684573584965-0
+# (nil)
+XREAD STREAMS fruits 1684573584964-0
+# 1) 1) "fruits"
+#    2) 1) 1) "1684573584965-0"
+```
+
+```sh
+XADD fruits * name banana color yellow
+# "1684574013812-0"
+
+XREAD STREAMS fruits 0-0
+# 1) 1) "fruits"
+#    2) 1) 1) "1684573584965-0"
+#       2) 1) "1684574013812-0"
+
+XREAD COUNT 1 STREAMS fruits 0-0
+# 1) 1) "fruits"
+#    2) 1) 1) "1684573584965-0"
+
+XREAD COUNT 3 STREAMS fruits 0-0
+# 1) 1) "fruits"
+#    2) 1) 1) "1684573584965-0"
+#       2) 1) "1684574013812-0"
+```
