@@ -268,3 +268,213 @@ FT.EXPLAINCLI idx:items '(@name:(chair)) | (@description:(chair))'
 # 10) }
 # 11)
 ```
+
+### 170. Query Performance with PROFILE
+
+- `FT.PROFILE`: Performs a `FT.SEARCH` or `FT.AGGREGATE` command and collects performance information
+
+```sh
+FT.PROFILE idx:items SEARCH QUERY 'chairs' LIMIT 0 0
+# 1) 1) (integer) 206
+# 2) 1) 1) Total profile time
+#       2) "0"
+#    2) 1) Parsing time
+#       2) "0"
+#    3) 1) Pipeline creation time
+#       2) "0"
+#    4) 1) Iterators profile
+#       2)  1) Type
+#           2) UNION
+#           3) Query type
+#           4) UNION
+#           5) Time
+#           6) "0"
+#           7) Counter
+#           8) (integer) 206
+#           9) Child iterators
+#          10)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) chairs
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 101
+#               9) Size
+#              10) (integer) 101
+#          11)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) +chair
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 101
+#               9) Size
+#              10) (integer) 101
+#          12)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) chair
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 176
+#               9) Size
+#              10) (integer) 176
+#    5) 1) Result processors profile
+#       2) 1) Type
+#          2) Index
+#          3) Time
+#          4) "0"
+#          5) Counter
+#          6) (integer) 206
+#       3) 1) Type
+#          2) Counter
+#          3) Time
+#          4) "0"
+#          5) Counter
+#          6) (integer) 1
+
+FT.PROFILE idx:items SEARCH QUERY '%%chair%%' LIMIT 0 0
+# 1) 1) (integer) 222
+# 2) 1) 1) Total profile time
+#       2) "0"
+#    2) 1) Parsing time
+#       2) "0"
+#    3) 1) Pipeline creation time
+#       2) "0"
+#    4) 1) Iterators profile
+#       2)  1) Type
+#           2) UNION
+#           3) Query type
+#           4) "FUZZY - chair"
+#           5) Time
+#           6) "0"
+#           7) Counter
+#           8) (integer) 222
+#           9) Child iterators
+#          10)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) +chair
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 101
+#               9) Size
+#              10) (integer) 101
+#          11)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) +chais
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 1
+#               9) Size
+#              10) (integer) 1
+#          12)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) +fair
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 1
+#               9) Size
+#              10) (integer) 1
+#          13)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) +pair
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 1
+#               9) Size
+#              10) (integer) 1
+#          14)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) car
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 18
+#               9) Size
+#              10) (integer) 18
+#          15)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) chair
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 176
+#               9) Size
+#              10) (integer) 176
+#          16)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) chaira
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 1
+#               9) Size
+#              10) (integer) 1
+#          17)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) chairs
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 101
+#               9) Size
+#              10) (integer) 101
+#          18)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) chaise
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 1
+#               9) Size
+#              10) (integer) 1
+#          19)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) chat
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 1
+#               9) Size
+#              10) (integer) 1
+#          20)  1) Type
+#               2) TEXT
+#               3) Term
+#               4) cheer
+#               5) Time
+#               6) "0"
+#               7) Counter
+#               8) (integer) 4
+#               9) Size
+#              10) (integer) 4
+#    5) 1) Result processors profile
+#       2) 1) Type
+#          2) Index
+#          3) Time
+#          4) "0"
+#          5) Counter
+#          6) (integer) 222
+#       3) 1) Type
+#          2) Counter
+#          3) Time
+#          4) "0"
+#          5) Counter
+#          6) (integer) 1
+```
