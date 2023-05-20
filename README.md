@@ -805,4 +805,17 @@ Stream key would be a unix time (millisecond) + number
 > `XREAD BLOCK 3000 ... $` will return only one newest message \
 > So we might have to `XREAD` in a loop with something like `XREAD BLOCK 3000 ... {latest timestamp}`
 
+### 183. Issues with Standard Streams
+
+- Problem #1: Standard streams deliver all messages to all consumers
+- Problem #2: Tough to handle a consumer crashing
+
+### 184. Consumer Groups
+
+- All consumer groups in a group get a unique name
+- Each message is sent to only one member of a consumer group
+- Redis keeps track of where it sent each message
+- Each consumer has to 'acknowledge' (ACK) receipt of a message
+- Redis keeps track of what the last delivered message to a stream group is
+
 </details>
