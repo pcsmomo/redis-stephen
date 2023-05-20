@@ -138,3 +138,52 @@ XRANGE fruits (1684621171617-0 +
 #       3) "color"
 #       4) "yellow"
 ```
+
+## 185. Creating and Inspecting Consumer Groups
+
+- `XGROUP CREATE`: Creates a consumer group.
+- `XGROUP CREATECONSUMER`: Creates a consumer in a consumer group.
+- `XINFO GROUPS`: Returns a list of the consumer groups of a stream.
+- `XINFO CONSUMERS`: Returns a list of the consumers in a consumer group.
+
+```sh
+DEL fruits
+
+XGROUP CREATE fruits fruits-group $ MKSTREAM
+# fruits: Key of the stream
+# fruit-gruop: Name of the group
+# $: (or 0-0)if the stream already exists, only handle messages added from this point on
+# MKSTREAM: Make the stream, if it does not already exist
+
+XGROUP CREATECONSUMER fruits fruits-group fruits-1
+# fruits: Key of the stream
+# fruit-gruop: Name of the group
+# fruits-1: Name of the new consumer
+XGROUP CREATECONSUMER fruits fruits-group fruits-2
+```
+
+```sh
+XINFO GROUPS fruits
+# 1) 1) "name"
+#    2) "fruits-group"
+#    3) "consumers"
+#    4) (integer) 2
+#    5) "pending"
+#    6) (integer) 0
+#    7) "last-delivered-id"
+#    8) "0-0"
+
+XINFO CONSUMERS fruits fruits-group
+# 1) 1) "name"
+#    2) "fruits-1"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 196811
+# 2) 1) "name"
+#    2) "fruits-2"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 195710
+```
