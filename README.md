@@ -45,6 +45,7 @@ Redis: The Complete Developer's Guide by Stephen Grider
 - [Section 16: Transaction](./docs/README-16-transaction.md)
 - [Section 17: Lua && Lua Script with Redis](./docs/README-17-lua.md)
 - [Section 19: Querying Data with RediSearch](./docs/README-19-redis-search.md)
+- [Section 21: Service Communication with Streams](./docs/README-02-basic.md)
 
 # Details
 
@@ -792,5 +793,9 @@ npm run dev
 - Used for communication between different servers
 - Most useful with `consumer groups`
 - TONS and TONS of tiny details
+
+### 176. Use Case of Streams
+
+Stream key would be a unix time (millisecond) + number
 
 </details>
