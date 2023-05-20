@@ -58,3 +58,23 @@ XREAD COUNT 3 STREAMS fruits 0-0
 #    2) 1) 1) "1684573584965-0"
 #       2) 1) "1684574013812-0"
 ```
+
+## 179. Blocking Reads
+
+```sh
+# wait for 3 seconds until a new message comes
+XREAD BLOCK 3000 STREAMS fruits 0-0
+# the new message below will be displayed here
+```
+
+```sh
+# during waiting, add a new message in a different terminal
+XADD fruits * name orange color orange
+# "1684621171617-0"
+```
+
+```sh
+# the COUNT will be ignored, or if there's data BLOCK will be ignored
+XREAD COUNT 5 BLOCK 3000 STREAMS fruits 1684621171617-0
+XADD fruits * name apple color red
+```

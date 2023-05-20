@@ -11,7 +11,7 @@ Redis: The Complete Developer's Guide by Stephen Grider
 - e-commerce-app
   - redis stack server
     - `docker compose up`
-    - `docker exec -it redis-stack-server redis-cli`
+    - `docker exec -it redis-e-commerce redis-cli`
   - rbay
     - `npm install`
     - `npm run dev` -> localhost:3000
