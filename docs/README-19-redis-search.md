@@ -206,3 +206,65 @@ FT._LIST
 # 1) "idx:cars"
 # 2) "idx:items"
 ```
+
+### 169. Understanding Queries with EXPLAIN
+
+- `FT.EXPLAINCLI`: Returns the execution plan for a complex query
+
+```sh
+FT.EXPLAINCLI idx:items 'chair'
+# 1) UNION {
+# 2)   chair
+# 3)   +chair(expanded)
+# 4) }
+# 5)
+```
+
+- Stemming
+  - chairs, chaired, chairing -> chair
+- `+chair(expanded)` does the opposite of Stemming
+  - chair -> chairs, chaired, chairing
+
+```sh
+# exclude "desk"
+FT.EXPLAINCLI idx:items 'chair -desk'
+#  1) INTERSECT {
+#  2)   UNION {
+#  3)     chair
+#  4)     +chair(expanded)
+#  5)   }
+#  6)   NOT{
+#  7)     desk
+#  8)   }
+#  9) }
+# 10)
+```
+
+```sh
+# It doesn't search description
+FT.EXPLAINCLI idx:items '@name:(chair) | @description:(chair)'
+#  1) @name:UNION {
+#  2)   @name:UNION {
+#  3)     @name:chair
+#  4)     @name:+chair(expanded)
+#  5)   }
+#  6)   @NULL:UNION {
+#  7)     @NULL:chair
+#  8)     @NULL:+chair(expanded)
+#  9)   }
+# 10) }
+# 11)
+
+FT.EXPLAINCLI idx:items '(@name:(chair)) | (@description:(chair))'
+#  1) UNION {
+#  2)   @name:UNION {
+#  3)     @name:chair
+#  4)     @name:+chair(expanded)
+#  5)   }
+#  6)   @description:UNION {
+#  7)     @description:chair
+#  8)     @description:+chair(expanded)
+#  9)   }
+# 10) }
+# 11)
+```
