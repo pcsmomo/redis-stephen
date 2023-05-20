@@ -21,6 +21,7 @@ XADD fruits * name strawberry color red
 ## 178. Consuming Streams with XREAD
 
 - `XREAD`: Returns messages from multiple streams with IDs greater than the ones requested. Blocks until a message is available otherwise.
+  - timestamp is _EXCLUSIVE_
 
 ```sh
 # Read all messages from the beginning of time
@@ -86,4 +87,54 @@ XADD fruits * name apple color red
 # $: Look for messages starting at the 'current' time
 XREAD COUNT 5 BLOCK 3000 STREAMS fruits $
 XADD fruits * name pineapple color yellow
+# "1684621806402-0"
+```
+
+## 182. Reading Streams with XRANGE
+
+- `XRANGE`: Returns the messages from a stream within a range of IDs.
+  - timestamp is _INCLUSIVE_
+
+```sh
+# inclusive
+XRANGE fruits 1684621171617-0 1684621806402-0
+# 1) 1) "1684621171617-0"
+#    2) 1) "name"
+#       2) "orange"
+#       3) "color"
+#       4) "orange"
+# 2) 1) "1684621355920-0"
+#    2) 1) "name"
+#       2) "apple"
+#       3) "color"
+#       4) "red"
+# 3) 1) "1684621806402-0"
+#    2) 1) "name"
+#       2) "pineapple"
+#       3) "color"
+#       4) "yellow"
+
+# exclusive
+XRANGE fruits (1684621171617-0 (1684621806402-0
+# 1) 1) "1684621355920-0"
+#    2) 1) "name"
+#       2) "apple"
+#       3) "color"
+#       4) "red"
+
+# all messages
+XRANGE fruits - +
+
+# after 1684621171617-0 to the latest
+XRANGE fruits (1684621171617-0 +
+# 1) 1) "1684621355920-0"
+#    2) 1) "name"
+#       2) "apple"
+#       3) "color"
+#       4) "red"
+# 2) 1) "1684621806402-0"
+#    2) 1) "name"
+#       2) "pineapple"
+#       3) "color"
+#       4) "yellow"
 ```

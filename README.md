@@ -798,4 +798,11 @@ npm run dev
 
 Stream key would be a unix time (millisecond) + number
 
+### 181. A Little Gotcha Around Streams
+
+#### To receive multiple messages
+
+> `XREAD BLOCK 3000 ... $` will return only one newest message \
+> So we might have to `XREAD` in a loop with something like `XREAD BLOCK 3000 ... {latest timestamp}`
+
 </details>
