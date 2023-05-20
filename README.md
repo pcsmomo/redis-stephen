@@ -774,4 +774,14 @@ If we want to weight to `name` 5 times more as `name` is way more important than
 (@name:(chair)=>{ $weight: 5.0 } | @description:(chair))
 ```
 
+### 172. Updating an Existing Index
+
+```sh
+FT.DROPINDEX idx:items
+```
+
+```sh
+npm run dev
+```
+
 </details>
