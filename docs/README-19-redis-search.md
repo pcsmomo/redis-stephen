@@ -478,3 +478,15 @@ FT.PROFILE idx:items SEARCH QUERY '%%chair%%' LIMIT 0 0
 #          5) Counter
 #          6) (integer) 1
 ```
+
+## 172. Updating an Existing Index
+
+```sh
+FT.DROPINDEX idx:items
+```
+
+## 173. Executing the Search
+
+```sh
+FT.SEARCH idx:items '@ownerId:{8ed501}'
+```

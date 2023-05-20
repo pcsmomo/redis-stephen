@@ -20,11 +20,12 @@ export const createIndexes = async () => {
 			},
 			description: {
 				type: SchemaFieldTypes.TEXT,
-				SORTABLE: 'UNF'
+				SORTABLE: false
 			},
 			ownerId: {
 				type: SchemaFieldTypes.TAG,
-				SORTABLE: 'UNF'
+				// SORTABLE: 'UNF' // 'UNF' means Unnormalized Field
+				SORTABLE: false
 			},
 			endingAt: {
 				type: SchemaFieldTypes.NUMERIC,
