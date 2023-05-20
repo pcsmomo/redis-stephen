@@ -784,4 +784,13 @@ FT.DROPINDEX idx:items
 npm run dev
 ```
 
+## Section 21: Service Communication with Streams
+
+### 175. Streams
+
+- Kind of like a cross between a list and a sorted set
+- Used for communication between different servers
+- Most useful with `consumer groups`
+- TONS and TONS of tiny details
+
 </details>
