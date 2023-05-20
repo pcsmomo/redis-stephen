@@ -62,7 +62,7 @@ XREAD COUNT 3 STREAMS fruits 0-0
 ## 179. Blocking Reads
 
 ```sh
-# wait for 3 seconds until a new message comes
+# if no messages are available, wait for 3000 ms before returning
 XREAD BLOCK 3000 STREAMS fruits 0-0
 # the new message below will be displayed here
 ```
@@ -74,7 +74,16 @@ XADD fruits * name orange color orange
 ```
 
 ```sh
-# the COUNT will be ignored, or if there's data BLOCK will be ignored
+# either COUNT or BLOCK command will be ignored depending on data existance
 XREAD COUNT 5 BLOCK 3000 STREAMS fruits 1684621171617-0
+XREAD COUNT 5 BLOCK 3000 STREAMS fruits 0-0
 XADD fruits * name apple color red
+```
+
+## 180. An XREAD Shortcut
+
+```sh
+# $: Look for messages starting at the 'current' time
+XREAD COUNT 5 BLOCK 3000 STREAMS fruits $
+XADD fruits * name pineapple color yellow
 ```
