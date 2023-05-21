@@ -187,3 +187,116 @@ XINFO CONSUMERS fruits fruits-group
 #    5) "idle"
 #    6) (integer) 195710
 ```
+
+## 186. Consumer Groups in Action
+
+- `XREADGROUP`: Returns new or historical messages from a stream for a consumer in a group. Blocks until a message is available otherwise.
+
+```sh
+# hardcoded ID: (For test, we leave Redis auto-generate the ID in general)
+XADD fruits 10-0 name banana color yellow
+XADD fruits 20-0 name apple color red
+XADD fruits 30-0 name orange color orange
+# "30-0"
+```
+
+### consume with worker 1
+
+```sh
+XREADGROUP GROUP fruits-group worker-1 COUNT 1 BLOCK 2000 STREAMS fruits >
+# GROUP fruits-group: Name of the group
+# worker-1: Name of the worker we are reading as
+# COUNT 1: Optional, read at most 1 entry
+# BLOCK 2000: Optional, block for 2000ms
+# STREAMS fruits >: Only messages that were not delivered to any other consumer in this groupo
+# (STREAMS fruits 0-0: All messages)
+
+# 1) 1) "fruits"
+#    2) 1) 1) "10-0"
+#          2) 1) "name"
+#             2) "banana"
+#             3) "color"
+#             4) "yellow"
+```
+
+```sh
+XINFO GROUPS fruits
+# 1) 1) "name"
+#    2) "fruits-group"
+#    3) "consumers"
+#    4) (integer) 3
+#    5) "pending"   # not acqknowledge yet
+#    6) (integer) 1
+#    7) "last-delivered-id"
+#    8) "10-0"
+XINFO CONSUMERS fruits fruits-group
+# 1) 1) "name"
+#    2) "fruits-1"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 33331984
+# 2) 1) "name"
+#    2) "fruits-2"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 33330883
+# 3) 1) "name"
+#    2) "worker-1"
+#    3) "pending"
+#    4) (integer) 1
+#    5) "idle"
+#    6) (integer) 59137
+```
+
+### consume with worker 2
+
+```sh
+XREADGROUP GROUP fruits-group worker-2 COUNT 1 BLOCK 2000 STREAMS fruits >
+# 1) 1) "fruits"
+#    2) 1) 1) "20-0"
+#          2) 1) "name"
+#             2) "apple"
+#             3) "color"
+#             4) "red"
+```
+
+```sh
+XINFO GROUPS fruits
+# 1) 1) "name"
+#    2) "fruits-group"
+#    3) "consumers"
+#    4) (integer) 4
+#    5) "pending"
+#    6) (integer) 2
+#    7) "last-delivered-id"
+#    8) "20-0"
+XINFO CONSUMERS fruits fruits-group
+# 1) 1) "name"
+#    2) "fruits-1"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 33483696
+# 2) 1) "name"
+#    2) "fruits-2"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 33482595
+# 3) 1) "name"
+#    2) "worker-1"
+#    3) "pending"
+#    4) (integer) 1
+#    5) "idle"
+#    6) (integer) 210849
+# 4) 1) "name"
+#    2) "worker-2"
+#    3) "pending"
+#    4) (integer) 1
+#    5) "idle"
+#    6) (integer) 5369
+```
+
+![consumer groups](../images/186-consumer-groups.png)
