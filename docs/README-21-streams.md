@@ -300,3 +300,116 @@ XINFO CONSUMERS fruits fruits-group
 ```
 
 ![consumer groups](../images/186-consumer-groups.png)
+
+## 187. Claiming Expired Messages
+
+- `XACK`: Returns the number of messages that were successfully acknowledged by the consumer group member of a stream.
+- `XAUTOCLAIM`: Changes, or acquires, ownership of messages in a consumer group, as if the messages were delivered to as consumer group member.
+
+```sh
+XACK fruits fruits-group 10-0
+# fruits: Key of the stream
+# fruits-group: Name of the group
+# 10-0 Ack the message ID
+
+# (integer) 1
+
+
+XINFO GROUPS fruits
+# 1) 1) "name"
+#    2) "fruits-group"
+#    3) "consumers"
+#    4) (integer) 4
+#    5) "pending"
+#    6) (integer) 1
+#    7) "last-delivered-id"
+#    8) "20-0"
+XINFO CONSUMERS fruits fruits-group
+# ...
+# 3) 1) "name"
+#    2) "worker-1"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 132321823
+# ...
+```
+
+### AUTOCLAIM
+
+```sh
+# Reset all
+DEL fruits
+
+XGROUP CREATE fruits fruits-group $ MKSTREAM
+
+XGROUP CREATECONSUMER fruits fruits-group fruits-1
+XGROUP CREATECONSUMER fruits fruits-group fruits-2
+
+XADD fruits 10-0 name banana color yellow
+XADD fruits 20-0 name apple color red
+XADD fruits 30-0 name orange color orange
+```
+
+```sh
+# Read it but don't acknowledge it with worker-1
+XREADGROUP GROUP fruits-group worker-1 COUNT 1 BLOCK 2000 STREAMS fruits >
+# 1) 1) "fruits"
+#    2) 1) 1) "10-0"
+#          2) 1) "name"
+#             2) "banana"
+#             3) "color"
+#             4) "yellow"
+
+# and auto claim with worker-2
+XAUTOCLAIM fruits fruits-group worker-2 10000 0-0
+# fruits: Key of the stream
+# fruits-group: Name of the group
+# worker-2: Assign these pending messages to worker-2
+# Claim any messages that have been pending longer than 10 seconds
+# Look for any pending messages after this ID
+
+# 1) "0-0"
+# 2) 1) 1) "10-0"
+#       2) 1) "name"
+#          2) "banana"
+#          3) "color"
+#          4) "yellow"
+```
+
+```sh
+XINFO GROUPS fruits
+# 1) 1) "name"
+#    2) "fruits-group"
+#    3) "consumers"
+#    4) (integer) 4
+#    5) "pending"
+#    6) (integer) 1
+#    7) "last-delivered-id"
+#    8) "10-0"
+XINFO CONSUMERS fruits fruits-group
+# 1) 1) "name"
+#    2) "fruits-1"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 281318
+# 2) 1) "name"
+#    2) "fruits-2"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 281318
+# 3) 1) "name"
+#    2) "worker-1"
+#    3) "pending"
+#    4) (integer) 0
+#    5) "idle"
+#    6) (integer) 228269
+# 4) 1) "name"
+#    2) "worker-2"
+#    3) "pending"
+#    4) (integer) 1
+#    5) "idle"
+#    6) (integer) 131781
+```
